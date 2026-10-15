@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "100-square waffle chart of ABS NHS 2022 selected chronic condition count. 49.9% report one or more selected conditions; 50/100 cells rounded to nearest person-equivalent.",
+  "width": 380,
+  "height": 380,
+  "data": {
+    "url": "data/abs_chronic_waffle_2022.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.status === 'Has 1+ selected chronic conditions' ? '49.9%' : '50.1%'",
+      "as": "display_percentage"
+    }
+  ],
+
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 2,
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null,
+      "sort": "ascending"
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "sort": "descending"
+    },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "title": "Selected chronic conditions (2022)",
+      "scale": {
+        "domain": [
+          "Has 1+ selected chronic conditions",
+          "No selected chronic conditions"
+        ],
+        "range": [
+          "#176b91",
+          "#dbe8ee"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": {
+      "condition": {
+        "test": "datum.status === 'Has 1+ selected chronic conditions'",
+        "value": "Has 1+ selected chronic conditions - 49.9%"
+      },
+      "value": "No selected chronic conditions - 50.1%"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  }
+}

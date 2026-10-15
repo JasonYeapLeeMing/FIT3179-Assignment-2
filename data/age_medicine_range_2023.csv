@@ -1,0 +1,7 @@
+group_short,min_rate,max_rate,min_age,max_age
+Cardiovascular,0.00833,1.35417,0-18,65+
+Nervous system,0.0575,0.49833,0-18,65+
+Alimentary,0.01,0.56083,0-18,65+
+Antiinfectives,0.05417,0.1425,0-18,65+
+Respiratory,0.015,0.1275,0-18,65+
+Musculoskeletal,0.0,0.115,0-18,65+

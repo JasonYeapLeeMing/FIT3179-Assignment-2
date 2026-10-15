@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Matrix heatmap of selected health indicators by survey year.",
+  "width": "container",
+  "height": 275,
+  "data": {
+    "url": "data/chronic_conditions.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": [
+        "2001",
+        "2004\u201305",
+        "2007\u201308",
+        "2011\u201312",
+        "2014\u201315",
+        "2017\u201318",
+        "2022"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "condition",
+      "type": "nominal",
+      "title": null
+    },
+    "color": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Population (%)",
+      "scale": {
+        "scheme": "blues",
+        "zero": true
+      }
+    },
+    "tooltip": [
+      {
+        "field": "condition",
+        "title": "Indicator"
+      },
+      {
+        "field": "year",
+        "title": "Survey"
+      },
+      {
+        "field": "percentage",
+        "title": "Population (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dorling-style cartogram of mean monthly PBS scripts per resident across Australian states and territories in 2025.",
+  "width": 760,
+  "height": 560,
+  "data": {
+    "url": "data/pbs_state_dorling_2025.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "scale": {
+        "domain": [-0.5, 8.7],
+        "nice": false
+      },
+      "axis": null
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "scale": {
+        "domain": [-1.5, 6.0],
+        "nice": false
+      },
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.95,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "size": {
+          "field": "scripts_per_erp_monthly_mean",
+          "type": "quantitative",
+          "title": "Mean monthly scripts per resident",
+          "scale": {
+            "domain": [0, 1.5],
+            "range": [0, 13500]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "scripts_per_erp_monthly_mean",
+          "type": "quantitative",
+          "title": "Mean monthly scripts per resident",
+          "scale": {
+            "domain": [0.6, 1.35],
+            "range": ["#b8d7eb", "#175f9b"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State/territory"
+          },
+          {
+            "field": "scripts_per_erp_monthly_mean",
+            "type": "quantitative",
+            "title": "Mean monthly scripts per resident",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontWeight": "bold",
+        "fontSize": 17,
+        "color": "#FFFFFF"
+      },
+      "encoding": {
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State/territory"
+          },
+          {
+            "field": "scripts_per_erp_monthly_mean",
+            "type": "quantitative",
+            "title": "Mean monthly scripts per resident",
+            "format": ".3f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "titleFontSize": 13,
+      "labelFontSize": 12
+    }
+  }
+}
+

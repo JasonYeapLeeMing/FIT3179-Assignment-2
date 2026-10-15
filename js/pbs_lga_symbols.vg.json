@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map of 2025 mean monthly PBS scripts per resident across Australian LGAs. Circle AREA encodes rate, not absolute prescriptions.",
+  "width": "container",
+  "height": 500,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states_2021.topojson.json",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA2020"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#edf1f4",
+        "stroke": "#b3c0c9",
+        "strokeWidth": 0.65
+      }
+    },
+    {
+      "data": {
+        "url": "data/pbs_lga_points_2025.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#347DA5",
+        "opacity": 0.55,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "scripts_per_erp_monthly_mean",
+          "type": "quantitative",
+          "title": "Mean monthly scripts per resident",
+          "scale": {
+            "domain": [
+              0,
+              3
+            ],
+            "range": [
+              0,
+              120
+            ]
+          },
+          "legend": {
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "scripts_per_erp_monthly_mean",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Mean monthly scripts per resident"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

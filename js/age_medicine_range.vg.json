@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  },
+  "description": "Range between age groups for mean monthly PBS scripts per resident, 2023.",
+  "height": 350,
+  "data": {
+    "url": "data/age_medicine_range_2023.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 5,
+        "color": "#7B9CB9"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_rate",
+          "type": "quantitative",
+          "title": "Mean monthly prescriptions per resident (2023)"
+        },
+        "x2": {
+          "field": "max_rate"
+        },
+        "y": {
+          "field": "group_short",
+          "type": "nominal",
+          "sort": [
+            "Cardiovascular",
+            "Nervous system",
+            "Alimentary",
+            "Antiinfectives",
+            "Respiratory",
+            "Musculoskeletal"
+          ],
+          "title": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110,
+        "color": "#D78C44"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_rate",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "group_short",
+          "type": "nominal",
+          "sort": [
+            "Cardiovascular",
+            "Nervous system",
+            "Alimentary",
+            "Antiinfectives",
+            "Respiratory",
+            "Musculoskeletal"
+          ]
+        },
+        "tooltip": [
+          {
+            "field": "group_short",
+            "title": "Group"
+          },
+          {
+            "field": "min_age",
+            "title": "Lowest age group"
+          },
+          {
+            "field": "min_rate",
+            "title": "Lowest rate",
+            "format": ".3f"
+          },
+          {
+            "field": "max_age",
+            "title": "Highest age group"
+          },
+          {
+            "field": "max_rate",
+            "title": "Highest rate",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110,
+        "color": "#194D71"
+      },
+      "encoding": {
+        "x": {
+          "field": "max_rate",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "group_short",
+          "type": "nominal",
+          "sort": [
+            "Cardiovascular",
+            "Nervous system",
+            "Alimentary",
+            "Antiinfectives",
+            "Respiratory",
+            "Musculoskeletal"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope chart comparing mean monthly PBS prescription rates for six selected medicine categories in 2013 and 2023.",
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "data/pbs_atc1_annual.csv"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  },
+  "transform": [
+    {
+      "filter": "toNumber(datum.year) === 2013 || toNumber(datum.year) === 2023"
+    },
+    {
+      "filter": {
+        "field": "group",
+        "oneOf": [
+          "CARDIOVASCULAR SYSTEM",
+          "NERVOUS SYSTEM",
+          "ALIMENTARY TRACT AND METABOLISM",
+          "ANTIINFECTIVES FOR SYSTEMIC USE",
+          "RESPIRATORY SYSTEM",
+          "MUSCULO-SKELETAL SYSTEM"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.group === 'CARDIOVASCULAR SYSTEM' ? 'Cardiovascular' : datum.group === 'NERVOUS SYSTEM' ? 'Nervous system' : datum.group === 'ALIMENTARY TRACT AND METABOLISM' ? 'Alimentary & metabolism' : datum.group === 'ANTIINFECTIVES FOR SYSTEMIC USE' ? 'Antiinfectives' : datum.group === 'RESPIRATORY SYSTEM' ? 'Respiratory' : 'Musculoskeletal'",
+      "as": "category_label"
+    },
+    {
+      "calculate": "toNumber(datum.year)",
+      "as": "year_numeric"
+    }
+  ],
+  "params": [
+    {
+      "name": "selected",
+      "select": {
+        "type": "point",
+        "fields": ["category_label"]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": true,
+      "size": 100
+    },
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "year_numeric",
+      "type": "ordinal",
+      "title": "Year",
+      "sort": [2013, 2023],
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 10
+      },
+      "scale": {
+        "paddingInner": 0.75,
+        "paddingOuter": 0.4
+      }
+    },
+    "y": {
+      "field": "scripts_rate_monthly_mean",
+      "type": "quantitative",
+      "title": "Mean monthly prescriptions per resident",
+      "scale": {
+        "zero": true
+      }
+    },
+    "color": {
+      "field": "category_label",
+      "type": "nominal",
+      "title": "Medicine category",
+      "scale": {
+        "domain": [
+          "Cardiovascular",
+          "Nervous system",
+          "Alimentary & metabolism",
+          "Antiinfectives",
+          "Respiratory",
+          "Musculoskeletal"
+        ],
+        "range": [
+          "#26734D",
+          "#A16B4F",
+          "#3D78B5",
+          "#E28B36",
+          "#8064A2",
+          "#C76B87"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "columns": 3,
+        "labelLimit": 200
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "selected",
+        "value": 1
+      },
+      "value": 0.15
+    },
+    "tooltip": [
+      {
+        "field": "group",
+        "title": "Medicine category"
+      },
+      {
+        "field": "year_numeric",
+        "title": "Year"
+      },
+      {
+        "field": "scripts_rate_monthly_mean",
+        "title": "Mean monthly prescriptions per resident",
+        "format": ".3f"
+      }
+    ]
+  }
+}

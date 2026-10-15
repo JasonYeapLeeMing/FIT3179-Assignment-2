@@ -1,0 +1,83 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Vertical boxplots showing monthly PBS prescription rates for six selected ATC Level 1 medicine groups, 2013–2023.",
+  "width": "container",
+  "height": 390,
+  "data": {
+    "url": "data/pbs_atc1_monthly.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "field": "group",
+        "oneOf": [
+          "CARDIOVASCULAR SYSTEM",
+          "NERVOUS SYSTEM",
+          "ALIMENTARY TRACT AND METABOLISM",
+          "ANTIINFECTIVES FOR SYSTEMIC USE",
+          "RESPIRATORY SYSTEM",
+          "MUSCULO-SKELETAL SYSTEM"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.group === 'CARDIOVASCULAR SYSTEM' ? 'Cardiovascular' : datum.group === 'NERVOUS SYSTEM' ? 'Nervous system' : datum.group === 'ALIMENTARY TRACT AND METABOLISM' ? 'Alimentary' : datum.group === 'ANTIINFECTIVES FOR SYSTEMIC USE' ? 'Antiinfectives' : datum.group === 'RESPIRATORY SYSTEM' ? 'Respiratory' : 'Musculoskeletal'",
+      "as": "group_short"
+    }
+  ],
+  "mark": {
+    "type": "boxplot",
+    "extent": 1.5,
+    "size": 35,
+    "color": "#4C78A8"
+  },
+  "encoding": {
+    "x": {
+      "field": "group_short",
+      "type": "nominal",
+      "title": "Medicine group",
+      "sort": [
+        "Cardiovascular",
+        "Nervous system",
+        "Alimentary",
+        "Antiinfectives",
+        "Respiratory",
+        "Musculoskeletal"
+      ],
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 11,
+        "labelLimit": 150,
+        "titleFontSize": 12,
+        "labelFont": "Arial",
+        "titleFont": "Arial"
+      }
+    },
+    "y": {
+      "field": "scripts_rate",
+      "type": "quantitative",
+      "title": "Monthly prescriptions per resident",
+      "scale": {
+        "zero": true
+      },
+      "axis": {
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "labelFont": "Arial",
+        "titleFont": "Arial",
+        "format": ".2f"
+      }
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E5E7EB",
+      "labelColor": "#334155",
+      "titleColor": "#0F2740"
+    }
+  }
+}

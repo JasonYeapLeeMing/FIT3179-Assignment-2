@@ -1,0 +1,176 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Four small-multiple line charts comparing age-standardised proportions by mutually exclusive counts of selected chronic conditions across ABS National Health Survey periods, 2007\u201308 to 2022.",
+  "data": {
+    "url": "data/abs_chronic_count_stream_2008_2022.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.category === 'No selected chronic conditions' ? '0 conditions' : datum.category === '1 selected chronic condition' ? '1 condition' : datum.category === '2 selected chronic conditions' ? '2 conditions' : '3+ conditions'",
+      "as": "group_label"
+    }
+  ],
+  "facet": {
+    "field": "group_label",
+    "type": "nominal",
+    "sort": [
+      "0 conditions",
+      "1 condition",
+      "2 conditions",
+      "3+ conditions"
+    ],
+    "header": {
+      "title": null,
+      "labelFont": "Arial",
+      "labelFontSize": 15,
+      "labelFontWeight": "bold",
+      "labelColor": "#18334a",
+      "labelPadding": 9
+    }
+  },
+  "columns": 2,
+  "spec": {
+    "width": 340,
+    "height": 170,
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "stroke": "#176b91",
+          "strokeWidth": 3,
+          "point": false
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Survey period (end year)",
+            "scale": {
+              "domain": [
+                2008,
+                2022
+              ],
+              "nice": false
+            },
+            "axis": {
+              "values": [
+                2008,
+                2012,
+                2015,
+                2018,
+                2022
+              ],
+              "format": "d",
+              "labelAngle": 0,
+              "grid": false,
+              "titleFontSize": 11
+            }
+          },
+          "y": {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "People (%)",
+            "scale": {
+              "domain": [
+                0,
+                60
+              ],
+              "nice": false
+            },
+            "axis": {
+              "values": [
+                0,
+                20,
+                40,
+                60
+              ],
+              "grid": true,
+              "gridColor": "#e7edf1",
+              "titleFontSize": 11
+            }
+          },
+          "order": {
+            "field": "year",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Condition-count group"
+            },
+            {
+              "field": "period",
+              "type": "nominal",
+              "title": "Survey period"
+            },
+            {
+              "field": "percentage",
+              "type": "quantitative",
+              "title": "Age-standardised proportion",
+              "format": ".1f"
+            }
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "circle",
+          "filled": true,
+          "size": 75,
+          "color": "#176b91",
+          "stroke": "white",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "percentage",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Condition-count group"
+            },
+            {
+              "field": "period",
+              "type": "nominal",
+              "title": "Survey period"
+            },
+            {
+              "field": "percentage",
+              "type": "quantitative",
+              "title": "Age-standardised proportion",
+              "format": ".1f"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "y": "shared",
+      "x": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 24
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelColor": "#556a7a",
+      "titleColor": "#18334a"
+    }
+  }
+}

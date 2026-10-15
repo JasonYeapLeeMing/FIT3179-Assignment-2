@@ -1,0 +1,19 @@
+group,group_short,age,year,scripts_per_resident_monthly_mean,months
+Cardiovascular system,Cardiovascular,0-18,2023,0.00833,12
+Cardiovascular system,Cardiovascular,19-64,2023,0.195,12
+Cardiovascular system,Cardiovascular,65+,2023,1.35417,12
+Nervous system,Nervous system,0-18,2023,0.0575,12
+Nervous system,Nervous system,19-64,2023,0.22583,12
+Nervous system,Nervous system,65+,2023,0.49833,12
+Alimentary tract and metabolism,Alimentary,0-18,2023,0.01,12
+Alimentary tract and metabolism,Alimentary,19-64,2023,0.10583,12
+Alimentary tract and metabolism,Alimentary,65+,2023,0.56083,12
+Antiinfectives for systemic use,Antiinfectives,0-18,2023,0.05417,12
+Antiinfectives for systemic use,Antiinfectives,19-64,2023,0.06417,12
+Antiinfectives for systemic use,Antiinfectives,65+,2023,0.1425,12
+Respiratory system,Respiratory,0-18,2023,0.015,12
+Respiratory system,Respiratory,19-64,2023,0.02833,12
+Respiratory system,Respiratory,65+,2023,0.1275,12
+Musculo-skeletal system,Musculoskeletal,0-18,2023,0.0,12
+Musculo-skeletal system,Musculoskeletal,19-64,2023,0.03,12
+Musculo-skeletal system,Musculoskeletal,65+,2023,0.115,12
