@@ -78,7 +78,8 @@
           },
           "legend": {
             "title": "Number of PBS medication types",
-            "orient": "bottom"
+            "orient": "bottom",
+            "titleLimit": 300
           }
         },
         "tooltip": [
