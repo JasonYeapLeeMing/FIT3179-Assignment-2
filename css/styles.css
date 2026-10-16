@@ -7,7 +7,7 @@ header p{max-width:660px;color:#d9eaf1;font-size:1.13rem}
 nav{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
 nav a{color:white;text-decoration:none;border-bottom:1px solid #a7d7e9;font-size:.9rem}
 main{max-width:1150px;margin:auto;padding:0 24px 65px}
-section{padding:62px 0;border-bottom:1px solid var(--line)}
+section{padding:62px 0;border-bottom:3px solid #0c0d0e}
 .section-no {
   display: block;
   position: relative;
