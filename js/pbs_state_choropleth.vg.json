@@ -56,7 +56,8 @@
           },
           "legend": {
             "orient": "bottom",
-            "direction": "horizontal"
+            "direction": "horizontal",
+            "titleLimit": 350
           }
         },
         "tooltip": [
