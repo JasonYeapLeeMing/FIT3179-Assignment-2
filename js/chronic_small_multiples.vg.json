@@ -117,10 +117,11 @@
         "mark": {
           "type": "circle",
           "filled": true,
-          "size": 75,
-          "color": "#176b91",
+          "size": 150,
+          "color": "#E69F00",
           "stroke": "white",
-          "strokeWidth": 1
+          "strokeWidth": 1,
+          "opacity": 1
         },
         "encoding": {
           "x": {
@@ -155,8 +156,8 @@
   },
   "resolve": {
     "scale": {
-      "y": "shared",
-      "x": "shared"
+      "y": "independent",
+      "x": "independent"
     }
   },
   "config": {

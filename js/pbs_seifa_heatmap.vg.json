@@ -1,0 +1,154 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of mean monthly PBS prescriptions per resident by SEIFA quintile and year, 2013–2023.",
+  "width": "container",
+  "height": 310,
+  "data": {
+    "url": "data/pbs_seifa_annual.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.scripts_rate_monthly_mean < 0.47 ? 'Below 0.47' : datum.scripts_rate_monthly_mean < 0.52 ? '0.47–<0.52' : datum.scripts_rate_monthly_mean < 0.57 ? '0.52–<0.57' : datum.scripts_rate_monthly_mean < 0.59 ? '0.57–<0.59' : '0.59 or more'",
+      "as": "rate_class"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "sort": "ascending",
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 8,
+        "tickSize": 0
+      }
+    },
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "title": "SEIFA socioeconomic quintile",
+      "sort": [
+        "Q1 (most disadvantaged)",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5 (least disadvantaged)"
+      ],
+      "axis": {
+        "labelLimit": 220,
+        "labelPadding": 8,
+        "tickSize": 0
+      }
+    },
+    "tooltip": [
+      {
+        "field": "group",
+        "type": "nominal",
+        "title": "SEIFA quintile"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "scripts_rate_monthly_mean",
+        "type": "quantitative",
+        "title": "Mean monthly scripts per resident",
+        "format": ".3f"
+      },
+      {
+        "field": "rate_class",
+        "type": "nominal",
+        "title": "Prescription rate class"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "rate_class",
+          "type": "nominal",
+          "title": "Mean monthly prescriptions per resident",
+          "scale": {
+            "domain": [
+              "Below 0.47",
+              "0.47–<0.52",
+              "0.52–<0.57",
+              "0.57–<0.59",
+              "0.59 or more"
+            ],
+            "range": [
+              "#F2EAF5",
+              "#D5B5DF",
+              "#AD79BE",
+              "#824497",
+              "#4D1766"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleOrient": "top",
+            "columns": 5,
+            "symbolType": "square",
+            "symbolSize": 180,
+            "labelFont": "Arial",
+            "titleFont": "Arial",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "labelLimit": 130
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "scripts_rate_monthly_mean",
+          "type": "quantitative",
+          "format": ".3f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.scripts_rate_monthly_mean >= 0.57",
+            "value": "#FFFFFF"
+          },
+          "value": "#243746"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "grid": false,
+      "domain": false
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

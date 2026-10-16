@@ -1,0 +1,127 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small-multiple horizontal bar charts comparing mean monthly PBS prescriptions per resident across six medicine groups within each age group in 2023.",
+  "data": {
+    "url": "data/age_medicine_2023.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.age === '0-18' ? '0–18' : datum.age === '19-64' ? '19–64' : '65+'",
+      "as": "age_label"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "age_label",
+      "type": "ordinal",
+      "sort": [
+        "0–18",
+        "19–64",
+        "65+"
+      ],
+      "title": null,
+      "header": {
+        "labelFont": "Times New Roman",
+        "labelFontSize": 17,
+        "labelFontWeight": "bold",
+        "labelColor": "#0F2740",
+        "labelPadding": 12
+      }
+    }
+  },
+  "spec": {
+    "width": 260,
+    "height": 310,
+    "mark": {
+      "type": "bar",
+      "color": "#56B4E9",
+      "cornerRadiusEnd": 2
+    },
+    "encoding": {
+      "y": {
+        "field": "group_short",
+        "type": "nominal",
+        "sort": [
+          "Cardiovascular",
+          "Nervous system",
+          "Alimentary",
+          "Antiinfectives",
+          "Respiratory",
+          "Musculoskeletal"
+        ],
+        "title": null,
+        "axis": {
+          "labelFont": "Arial",
+          "labelFontSize": 10,
+          "labelLimit": 115,
+          "labelPadding": 5,
+          "ticks": false,
+          "domain": false
+        }
+      },
+      "x": {
+        "field": "scripts_per_resident_monthly_mean",
+        "type": "quantitative",
+        "title": "Monthly prescriptions per resident",
+        "scale": {
+          "zero": true
+        },
+        "axis": {
+          "labelFont": "Arial",
+          "labelFontSize": 10,
+          "titleFont": "Arial",
+          "titleFontSize": 11,
+          "format": ".2f",
+          "tickCount": 4,
+          "grid": true,
+          "gridColor": "#E5E7EB"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "group",
+          "type": "nominal",
+          "title": "Medicine group"
+        },
+        {
+          "field": "age_label",
+          "type": "ordinal",
+          "title": "Age group"
+        },
+        {
+          "field": "scripts_per_resident_monthly_mean",
+          "type": "quantitative",
+          "title": "Monthly prescriptions per resident",
+          "format": ".3f"
+        },
+        {
+          "field": "months",
+          "type": "quantitative",
+          "title": "Months"
+        }
+      ]
+    }
+  },
+  "resolve": {
+    "scale": {
+      "x": "independent",
+      "y": "independent"
+    }
+  },
+  "spacing": 16,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelColor": "#334155",
+      "titleColor": "#0F2740"
+    },
+    "header": {
+      "labelFont": "Times New Roman"
+    }
+  }
+}
+

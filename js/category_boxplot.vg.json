@@ -1,7 +1,6 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Vertical boxplots showing monthly PBS prescription rates for six selected ATC Level 1 medicine groups, 2013–2023.",
+  "description": "Layered boxplots showing monthly PBS prescription rates for six selected ATC Level 1 medicine groups, 2013–2023.",
   "width": "container",
   "height": 390,
   "data": {
@@ -26,12 +25,6 @@
       "as": "group_short"
     }
   ],
-  "mark": {
-    "type": "boxplot",
-    "extent": 1.5,
-    "size": 35,
-    "color": "#4C78A8"
-  },
   "encoding": {
     "x": {
       "field": "group_short",
@@ -53,23 +46,239 @@
         "labelFont": "Arial",
         "titleFont": "Arial"
       }
-    },
-    "y": {
-      "field": "scripts_rate",
-      "type": "quantitative",
-      "title": "Monthly prescriptions per resident",
-      "scale": {
-        "zero": true
-      },
-      "axis": {
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "labelFont": "Arial",
-        "titleFont": "Arial",
-        "format": ".2f"
-      }
     }
   },
+  "layer": [
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "q1",
+              "field": "scripts_rate",
+              "as": "q1"
+            },
+            {
+              "op": "median",
+              "field": "scripts_rate",
+              "as": "median"
+            },
+            {
+              "op": "q3",
+              "field": "scripts_rate",
+              "as": "q3"
+            }
+          ],
+          "groupby": ["group_short"]
+        },
+        {
+          "calculate": "datum.q3 - datum.q1",
+          "as": "iqr"
+        },
+        {
+          "calculate": "datum.q1 - 1.5 * datum.iqr",
+          "as": "lower_fence"
+        },
+        {
+          "calculate": "datum.q3 + 1.5 * datum.iqr",
+          "as": "upper_fence"
+        },
+        {
+          "filter": "datum.scripts_rate >= datum.lower_fence && datum.scripts_rate <= datum.upper_fence"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "scripts_rate",
+              "as": "lower_whisker"
+            },
+            {
+              "op": "max",
+              "field": "scripts_rate",
+              "as": "upper_whisker"
+            }
+          ],
+          "groupby": ["group_short"]
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#4C78A8",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "y": {
+          "field": "lower_whisker",
+          "type": "quantitative",
+          "title": "Monthly prescriptions per resident",
+          "scale": {
+            "zero": true
+          },
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "labelFont": "Arial",
+            "titleFont": "Arial",
+            "format": ".2f"
+          }
+        },
+        "y2": {
+          "field": "upper_whisker"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "q1",
+              "field": "scripts_rate",
+              "as": "q1"
+            },
+            {
+              "op": "median",
+              "field": "scripts_rate",
+              "as": "median"
+            },
+            {
+              "op": "q3",
+              "field": "scripts_rate",
+              "as": "q3"
+            }
+          ],
+          "groupby": ["group_short"]
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "size": 35,
+        "color": "#4C78A8",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {
+          "field": "q1",
+          "type": "quantitative"
+        },
+        "y2": {
+          "field": "q3"
+        },
+        "tooltip": [
+          {
+            "field": "group_short",
+            "type": "nominal",
+            "title": "Medicine group"
+          },
+          {
+            "field": "q1",
+            "type": "quantitative",
+            "title": "Q1",
+            "format": ".3f"
+          },
+          {
+            "field": "median",
+            "type": "quantitative",
+            "title": "Median",
+            "format": ".3f"
+          },
+          {
+            "field": "q3",
+            "type": "quantitative",
+            "title": "Q3",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "median",
+              "field": "scripts_rate",
+              "as": "median"
+            }
+          ],
+          "groupby": ["group_short"]
+        }
+      ],
+      "mark": {
+        "type": "tick",
+        "color": "white",
+        "size": 35,
+        "thickness": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "median",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "q1",
+              "field": "scripts_rate",
+              "as": "q1"
+            },
+            {
+              "op": "q3",
+              "field": "scripts_rate",
+              "as": "q3"
+            }
+          ],
+          "groupby": ["group_short"]
+        },
+        {
+          "calculate": "datum.q3 - datum.q1",
+          "as": "iqr"
+        },
+        {
+          "calculate": "datum.q1 - 1.5 * datum.iqr",
+          "as": "lower_fence"
+        },
+        {
+          "calculate": "datum.q3 + 1.5 * datum.iqr",
+          "as": "upper_fence"
+        },
+        {
+          "filter": "datum.scripts_rate < datum.lower_fence || datum.scripts_rate > datum.upper_fence"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "color": "#E69F00",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "y": {
+          "field": "scripts_rate",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "group_short",
+            "type": "nominal",
+            "title": "Medicine group"
+          },
+          {
+            "field": "scripts_rate",
+            "type": "quantitative",
+            "title": "Monthly prescriptions per resident",
+            "format": ".3f"
+          }
+        ]
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null

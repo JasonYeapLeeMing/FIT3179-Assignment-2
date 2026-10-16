@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dorling-style cartogram of mean monthly PBS scripts per resident across Australian states and territories in 2025.",
+  "description": "Dorling-style cartogram of mean monthly PBS scripts per resident across Australian states and territories in 2025. Circle area and colour luminance encode prescription rates.",
   "width": 760,
   "height": 560,
   "data": {
@@ -30,7 +30,7 @@
     {
       "mark": {
         "type": "circle",
-        "opacity": 0.95,
+        "opacity": 0.98,
         "stroke": "#FFFFFF",
         "strokeWidth": 2
       },
@@ -38,20 +38,27 @@
         "size": {
           "field": "scripts_per_erp_monthly_mean",
           "type": "quantitative",
-          "title": "Mean monthly scripts per resident",
+          "title": "Mean monthly PBS prescriptions per resident",
           "scale": {
             "domain": [0, 1.5],
-            "range": [0, 13500]
+            "range": [600, 22000],
+            "clamp": true
           },
           "legend": null
         },
         "color": {
           "field": "scripts_per_erp_monthly_mean",
           "type": "quantitative",
-          "title": "Mean monthly scripts per resident",
+          "title": "Mean monthly PBS prescriptions per resident",
           "scale": {
             "domain": [0.6, 1.35],
-            "range": ["#b8d7eb", "#175f9b"]
+            "range": [
+              "#D9F3E9",
+              "#9ADDC5",
+              "#4FBE98",
+              "#009E73",
+              "#006747"
+            ]
           },
           "legend": null
         },
@@ -75,13 +82,19 @@
         "type": "text",
         "font": "Arial",
         "fontWeight": "bold",
-        "fontSize": 17,
-        "color": "#FFFFFF"
+        "fontSize": 17
       },
       "encoding": {
         "text": {
           "field": "state",
           "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.scripts_per_erp_monthly_mean < 0.95",
+            "value": "#173D32"
+          },
+          "value": "#FFFFFF"
         },
         "tooltip": [
           {

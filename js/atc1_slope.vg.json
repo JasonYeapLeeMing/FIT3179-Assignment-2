@@ -63,7 +63,7 @@
     "type": "line",
     "point": {
       "filled": true,
-      "size": 100
+      "size": 150
     },
     "strokeWidth": 3
   },
@@ -104,7 +104,7 @@
           "Musculoskeletal"
         ],
         "range": [
-          "#26734D",
+          "#DC267F",
           "#A16B4F",
           "#3D78B5",
           "#E28B36",

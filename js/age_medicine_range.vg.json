@@ -1,6 +1,144 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Range between age groups for mean monthly PBS scripts per resident, 2023.",
   "width": "container",
+  "height": 350,
+  "data": {
+    "url": "data/age_medicine_range_2023.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "group_short",
+      "type": "nominal",
+      "sort": [
+        "Cardiovascular",
+        "Nervous system",
+        "Alimentary",
+        "Antiinfectives",
+        "Respiratory",
+        "Musculoskeletal"
+      ],
+      "title": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 5,
+        "color": "#7B9CB9"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_rate",
+          "type": "quantitative",
+          "title": "Mean monthly prescriptions per resident (2023)",
+          "scale": {
+            "zero": true
+          }
+        },
+        "x2": {
+          "field": "max_rate"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 150,
+        "color": "#009E73",
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "min_rate",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 150,
+        "color": "#8055B8",
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "max_rate",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 350,
+        "opacity": 0.001,
+        "color": "#009E73"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_rate",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "group_short",
+            "type": "nominal",
+            "title": "Medicine group"
+          },
+          {
+            "field": "min_age",
+            "type": "nominal",
+            "title": "Lowest age group"
+          },
+          {
+            "field": "min_rate",
+            "type": "quantitative",
+            "title": "Lowest rate",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 350,
+        "opacity": 0.001,
+        "color": "#8055B8"
+      },
+      "encoding": {
+        "x": {
+          "field": "max_rate",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "group_short",
+            "type": "nominal",
+            "title": "Medicine group"
+          },
+          {
+            "field": "max_age",
+            "type": "nominal",
+            "title": "Highest age group"
+          },
+          {
+            "field": "max_rate",
+            "type": "quantitative",
+            "title": "Highest rate",
+            "format": ".3f"
+          }
+        ]
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null
@@ -17,118 +155,6 @@
       "labelFont": "Arial",
       "titleFont": "Arial"
     }
-  },
-  "description": "Range between age groups for mean monthly PBS scripts per resident, 2023.",
-  "height": 350,
-  "data": {
-    "url": "data/age_medicine_range_2023.csv"
-  },
-  "layer": [
-    {
-      "mark": {
-        "type": "rule",
-        "strokeWidth": 5,
-        "color": "#7B9CB9"
-      },
-      "encoding": {
-        "x": {
-          "field": "min_rate",
-          "type": "quantitative",
-          "title": "Mean monthly prescriptions per resident (2023)"
-        },
-        "x2": {
-          "field": "max_rate"
-        },
-        "y": {
-          "field": "group_short",
-          "type": "nominal",
-          "sort": [
-            "Cardiovascular",
-            "Nervous system",
-            "Alimentary",
-            "Antiinfectives",
-            "Respiratory",
-            "Musculoskeletal"
-          ],
-          "title": null
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 110,
-        "color": "#D78C44"
-      },
-      "encoding": {
-        "x": {
-          "field": "min_rate",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "group_short",
-          "type": "nominal",
-          "sort": [
-            "Cardiovascular",
-            "Nervous system",
-            "Alimentary",
-            "Antiinfectives",
-            "Respiratory",
-            "Musculoskeletal"
-          ]
-        },
-        "tooltip": [
-          {
-            "field": "group_short",
-            "title": "Group"
-          },
-          {
-            "field": "min_age",
-            "title": "Lowest age group"
-          },
-          {
-            "field": "min_rate",
-            "title": "Lowest rate",
-            "format": ".3f"
-          },
-          {
-            "field": "max_age",
-            "title": "Highest age group"
-          },
-          {
-            "field": "max_rate",
-            "title": "Highest rate",
-            "format": ".3f"
-          }
-        ]
-      }
-    },
-    {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 110,
-        "color": "#194D71"
-      },
-      "encoding": {
-        "x": {
-          "field": "max_rate",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "group_short",
-          "type": "nominal",
-          "sort": [
-            "Cardiovascular",
-            "Nervous system",
-            "Alimentary",
-            "Antiinfectives",
-            "Respiratory",
-            "Musculoskeletal"
-          ]
-        }
-      }
-    }
-  ]
+  }
 }
+

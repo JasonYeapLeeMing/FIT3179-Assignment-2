@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Side-by-side lollipop charts showing age-standardised percentages by number of selected chronic conditions in 2008 and 2022.",
+  "data": {"url": "data/abs_chronic_count_stream_2008_2022.csv"},
+  "transform": [
+    {"calculate": "datum.category === 'No selected chronic conditions' ? '0 conditions' : datum.category === '1 selected chronic condition' ? '1 condition' : datum.category === '2 selected chronic conditions' ? '2 conditions' : '3+ conditions'", "as": "group_label"}
+  ],
+  "hconcat": [
+    {
+      "title": "2008",
+      "transform": [{"filter": "toNumber(datum.year) === 2008"}],
+      "width": 335,
+      "height": 270,
+      "layer": [
+        {
+          "mark": {"type": "rule", "strokeWidth": 3, "color": "#607D94"},
+          "encoding": {
+            "x": {"field": "percentage", "type": "quantitative", "scale": {"domain": [0, 65], "nice": false}, "axis": {"title": "Age-standardised proportion of Australians (%)", "values": [0, 10, 20, 30, 40, 50, 60], "labelExpr": "datum.value + '%'", "grid": true, "gridColor": "#E7EDF1"}},
+            "x2": {"datum": 0},
+            "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"], "title": null}
+          }
+        },
+        {
+          "mark": {"type": "circle", "filled": true, "size": 230, "color": "#B34A26", "stroke": "#FFFFFF", "strokeWidth": 1.5,  "opacity": 1},
+          "encoding": {
+            "x": {"field": "percentage", "type": "quantitative"},
+            "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"]},
+            "tooltip": [{"field": "category", "type": "nominal", "title": "Condition-count group"}, {"field": "period", "type": "nominal", "title": "Survey period"}, {"field": "percentage", "type": "quantitative", "title": "Age-standardised population (%)", "format": ".1f"}]
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 12, "font": "Arial", "fontSize": 12, "fontWeight": "bold", "color": "#243746"},
+          "encoding": {"x": {"field": "percentage", "type": "quantitative"}, "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"]}, "text": {"field": "percentage", "type": "quantitative", "format": ".1f"}}
+        }
+      ]
+    },
+    {
+      "title": "2022",
+      "transform": [{"filter": "toNumber(datum.year) === 2022"}],
+      "width": 335,
+      "height": 270,
+      "layer": [
+        {
+          "mark": {"type": "rule", "strokeWidth": 3, "color": "#607D94"},
+          "encoding": {
+            "x": {"field": "percentage", "type": "quantitative", "scale": {"domain": [0, 65], "nice": false}, "axis": {"title": "Age-standardised proportion of Australians (%)", "values": [0, 10, 20, 30, 40, 50, 60], "labelExpr": "datum.value + '%'", "grid": true, "gridColor": "#E7EDF1"}},
+            "x2": {"datum": 0},
+            "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"], "title": null}
+          }
+        },
+        {
+          "mark": {"type": "circle", "filled": true, "size": 230, "color": "#B34A26", "stroke": "#FFFFFF", "strokeWidth": 1.5, "opacity": 1},
+          "encoding": {
+            "x": {"field": "percentage", "type": "quantitative"},
+            "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"]},
+            "tooltip": [{"field": "category", "type": "nominal", "title": "Condition-count group"}, {"field": "period", "type": "nominal", "title": "Survey period"}, {"field": "percentage", "type": "quantitative", "title": "Age-standardised population (%)", "format": ".1f"}]
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 12, "font": "Arial", "fontSize": 12, "fontWeight": "bold", "color": "#243746"},
+          "encoding": {"x": {"field": "percentage", "type": "quantitative"}, "y": {"field": "group_label", "type": "nominal", "sort": ["0 conditions", "1 condition", "2 conditions", "3+ conditions"]}, "text": {"field": "percentage", "type": "quantitative", "format": ".1f"}}
+        }
+      ]
+    }
+  ],
+  "spacing": 30,
+  "resolve": {"scale": {"x": "shared"}},
+  "config": {
+    "view": {"stroke": null},
+    "title": {"font": "Arial", "fontSize": 16, "fontWeight": "bold", "color": "#18334A"},
+    "axis": {"labelFont": "Arial", "titleFont": "Arial", "labelFontSize": 12, "titleFontSize": 13, "labelColor": "#556A7A", "titleColor": "#18334A"}
+  }
+}
+

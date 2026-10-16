@@ -1,6 +1,180 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Population-width mosaic of PBS medication type counts by age, ABS National Health Survey 2022 Table 22.3; widths from Table 22.1 estimated populations.",
   "width": "container",
+  "height": 370,
+  "padding": {
+    "top": 30,
+    "left": 5,
+    "right": 5,
+    "bottom": 5
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/abs_medication_mosaic_2022.csv"
+      },
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 1],
+            "nice": false
+          },
+          "axis": {
+            "title": "Share of population across selected age groups",
+            "format": ".0%"
+          }
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 1],
+            "nice": false
+          },
+          "axis": {
+            "title": "Percentage within each age group",
+            "format": ".0%"
+          }
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "medication_types",
+          "type": "nominal",
+          "sort": [
+            "None",
+            "1 type",
+            "2–4 types",
+            "5–9 types",
+            "10+ types"
+          ],
+          "scale": {
+            "domain": [
+              "None",
+              "1 type",
+              "2–4 types",
+              "5–9 types",
+              "10+ types"
+            ],
+            "range": [
+              "#F2ECF7",
+              "#D8C7E7",
+              "#B18DCE",
+              "#8055A8",
+              "#482475"
+            ]
+          },
+          "legend": {
+            "title": "Number of PBS medication types",
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "medication_types",
+            "type": "nominal",
+            "title": "Medication types"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Within age group",
+            "format": ".1f"
+          },
+          {
+            "field": "population_thousands",
+            "type": "quantitative",
+            "title": "Age group population (thousands)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "age_label": "0-17",
+            "label_x": 0.1100285
+          },
+          {
+            "age_label": "18-24",
+            "label_x": 0.261055
+          },
+          {
+            "age_label": "25-34",
+            "label_x": 0.370056
+          },
+          {
+            "age_label": "35-44",
+            "label_x": 0.509018
+          },
+          {
+            "age_label": "45-54",
+            "label_x": 0.644654
+          },
+          {
+            "age_label": "55-64",
+            "label_x": 0.7693265
+          },
+          {
+            "age_label": "65+",
+            "label_x": 0.914661
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -7,
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#243746",
+        "clip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "label_x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 1],
+            "nice": false
+          }
+        },
+        "y": {
+          "datum": 1,
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 1],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "age_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null
@@ -17,102 +191,6 @@
       "labelFont": "Arial",
       "titleFont": "Arial"
     }
-  },
-  "description": "Population-width mosaic of PBS medication type counts by age, ABS National Health Survey 2022 Table 22.3; widths from Table 22.1 estimated populations.",
-  "height": 370,
-  "data": {
-    "url": "data/abs_medication_mosaic_2022.csv"
-  },
-  "mark": {
-    "type": "rect",
-    "stroke": "white",
-    "strokeWidth": 1
-  },
-  "encoding": {
-    "x": {
-      "field": "x0",
-      "type": "quantitative",
-      "axis": {
-        "title": "Share of population across selected age groups",
-        "format": ".0%"
-      },
-      "scale": {
-        "domain": [
-          0,
-          1
-        ]
-      }
-    },
-    "x2": {
-      "field": "x1"
-    },
-    "y": {
-      "field": "y0",
-      "type": "quantitative",
-      "axis": {
-        "title": "Within-age-group share",
-        "format": ".0%"
-      },
-      "scale": {
-        "domain": [
-          0,
-          1
-        ]
-      }
-    },
-    "y2": {
-      "field": "y1"
-    },
-    "color": {
-      "field": "medication_types",
-      "type": "nominal",
-      "sort": [
-        "None",
-        "1 type",
-        "2–4 types",
-        "5–9 types",
-        "10+ types"
-      ],
-      "scale": {
-        "domain": [
-          "None",
-          "1 type",
-          "2–4 types",
-          "5–9 types",
-          "10+ types"
-        ],
-        "range": [
-          "#e4ebf1",
-          "#b9d0e0",
-          "#7aa7c6",
-          "#387da6",
-          "#16486e"
-        ]
-      },
-      "legend": {
-        "title": "Number of PBS medication types",
-        "orient": "bottom"
-      }
-    },
-    "tooltip": [
-      {
-        "field": "age",
-        "title": "Age group"
-      },
-      {
-        "field": "medication_types",
-        "title": "Medication types"
-      },
-      {
-        "field": "percentage",
-        "title": "Within age group",
-        "format": ".1f"
-      },
-      {
-        "field": "population_thousands",
-        "title": "Age group population (thousands)",
-        "format": ",.1f"
-      }
-    ]
   }
 }
+

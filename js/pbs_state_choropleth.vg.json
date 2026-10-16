@@ -1,74 +1,225 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Australian states and territories: 2025 mean monthly PBS scripts per estimated resident (mean of 12 monthly rates).",
   "width": "container",
   "height": 470,
-  "data": {
-    "url": "data/australia_states_2021.topojson.json",
-    "format": {
-      "type": "topojson",
-      "feature": "STE_2021_AUST_GDA2020"
-    }
-  },
-  "transform": [
-    {
-      "calculate": "{'1':'NSW','2':'VIC','3':'QLD','4':'SA','5':'WA','6':'TAS','7':'NT','8':'ACT'}[datum.properties.STE_CODE21]",
-      "as": "state"
-    },
-    {
-      "lookup": "state",
-      "from": {
-        "data": {
-          "url": "data/pbs_state_2025.csv"
-        },
-        "key": "state",
-        "fields": [
-          "scripts_per_erp_monthly_mean",
-          "months_observed"
-        ]
-      }
-    }
-  ],
   "projection": {
     "type": "mercator"
   },
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#ffffff",
-    "strokeWidth": 0.75
-  },
-  "encoding": {
-    "color": {
-      "field": "scripts_per_erp_monthly_mean",
-      "type": "quantitative",
-      "title": "Mean monthly scripts per resident",
-      "scale": {
-        "scheme": "blues"
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states_2021.topojson.json",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA2020"
+        }
       },
-      "legend": {
-        "orient": "bottom",
-        "direction": "horizontal"
+      "transform": [
+        {
+          "calculate": "{'1':'NSW','2':'VIC','3':'QLD','4':'SA','5':'WA','6':'TAS','7':'NT','8':'ACT'}[datum.properties.STE_CODE21]",
+          "as": "state"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/pbs_state_2025.csv"
+            },
+            "key": "state",
+            "fields": [
+              "scripts_per_erp_monthly_mean",
+              "months_observed"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.75
+      },
+      "encoding": {
+        "color": {
+          "field": "scripts_per_erp_monthly_mean",
+          "type": "quantitative",
+          "title": "Mean monthly scripts per resident",
+          "scale": {
+            "range": [
+              "#F8EDF3",
+              "#EBC9DB",
+              "#CC79A7",
+              "#A34C7D",
+              "#70244F"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME21",
+            "type": "nominal",
+            "title": "State/territory"
+          },
+          {
+            "field": "scripts_per_erp_monthly_mean",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Mean monthly scripts per resident"
+          },
+          {
+            "field": "months_observed",
+            "type": "quantitative",
+            "title": "Months observed"
+          }
+        ]
       }
     },
-    "tooltip": [
-      {
-        "field": "properties.STE_NAME21",
-        "type": "nominal",
-        "title": "State/territory"
+    {
+      "data": {
+        "values": [
+          {
+            "state": "WA",
+            "longitude": 121.0,
+            "latitude": -26.0
+          },
+          {
+            "state": "NT",
+            "longitude": 133.5,
+            "latitude": -19.5
+          },
+          {
+            "state": "SA",
+            "longitude": 135.0,
+            "latitude": -30.0
+          },
+          {
+            "state": "QLD",
+            "longitude": 145.0,
+            "latitude": -22.5
+          },
+          {
+            "state": "NSW",
+            "longitude": 147.0,
+            "latitude": -32.0
+          },
+          {
+            "state": "VIC",
+            "longitude": 144.5,
+            "latitude": -37.5
+          },
+          {
+            "state": "TAS",
+            "longitude": 146.5,
+            "latitude": -42.0
+          },
+          {
+            "state": "ACT",
+            "longitude": 150.5,
+            "latitude": -35.3
+          }
+        ]
       },
-      {
-        "field": "scripts_per_erp_monthly_mean",
-        "type": "quantitative",
-        "format": ".3f",
-        "title": "Mean monthly scripts per resident"
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "align": "center",
+        "baseline": "middle",
+        "fill": "#243746",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 3
       },
-      {
-        "field": "months_observed",
-        "type": "quantitative",
-        "title": "Months observed"
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
       }
-    ]
-  },
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "WA",
+            "longitude": 121.0,
+            "latitude": -26.0
+          },
+          {
+            "state": "NT",
+            "longitude": 133.5,
+            "latitude": -19.5
+          },
+          {
+            "state": "SA",
+            "longitude": 135.0,
+            "latitude": -30.0
+          },
+          {
+            "state": "QLD",
+            "longitude": 145.0,
+            "latitude": -22.5
+          },
+          {
+            "state": "NSW",
+            "longitude": 147.0,
+            "latitude": -32.0
+          },
+          {
+            "state": "VIC",
+            "longitude": 144.5,
+            "latitude": -37.5
+          },
+          {
+            "state": "TAS",
+            "longitude": 146.5,
+            "latitude": -42.0
+          },
+          {
+            "state": "ACT",
+            "longitude": 150.5,
+            "latitude": -35.3
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "align": "center",
+        "baseline": "middle",
+        "fill": "#243746"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null

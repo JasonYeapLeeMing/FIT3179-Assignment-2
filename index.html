@@ -12,9 +12,12 @@
 
 <body>
 <header>
-  <div class="eyebrow">FIT3179 · Data Visualisation 2</div>
   <h1>Medicine Use in Australia</h1>
-  <p>How prescription patterns and chronic health conditions offer different perspectives on Australia's changing healthcare needs.</p>
+  <p class="main-subtitle">
+  How prescription patterns and chronic health conditions
+  offer different perspectives on Australia's changing
+  healthcare needs.
+  </p>
   <nav>
     <a href="#national">01 National trends</a>
     <a href="#age">02 Age differences</a>
@@ -35,21 +38,60 @@
       <h3>How have medicine categories changed?</h3>
       <p class="note">Click a medicine group in the legend to highlight its trend. Rates are the mean of 12 monthly rates in each year, not annual totals.</p>
       <div id="national-trends" class="chart"></div>
+      <p class="note_question">What happens when a nation's medicine needs begin to shift?</p>
+      <p class="note">
+        From 2013 to 2023, <strong>cardiovascular medicines</strong> remained the most frequently 
+        prescribed of these six categories, with rates climbing after 2019. 
+        Yet antiinfective prescriptions tell a different story, 
+        <strong>dropping sharply in 2020 as the COVID-19 pandemic began</strong>. 
+        Together, these contrasting paths reveal that Australia's medicine use 
+        is far from a single, uniform trend.
+      </p>
     </div>
 
     <div class="panel">
       <h3>Which Medicine Groups Saw the Biggest Changes Between 2013 and 2023?</h3>
       <p class="note">Compare average monthly prescriptions per resident across six selected medicine groups. Upward slopes indicate increases, while downward slopes indicate decreases.</p>
       <div id="category-slope" class="chart"></div>
+      <p class="note_question">Which medicines changed the most over the
+        decade?</p>
+      <p class="note">
+        While cardiovascular prescriptions
+        climbed from approximately <strong>0.32 to 0.35</strong> per resident
+        each month, antiinfectives moved in the opposite
+        direction, falling from <strong>0.10 to 0.07</strong>. The contrast
+        raises an intriguing question: beyond these long-term
+        changes, how consistently were medicines dispensed
+        from month to month?
+      </p>
     </div>
 
     <div class="panel">
       <h3>How variable are monthly dispensing rates?</h3>
       <p class="note">Each box summarises the distribution of 132 monthly observations from 2013–2023 for a medicine group. This is not a patient-level distribution.</p>
       <div id="category-boxplot" class="chart"></div>
+      <p class="note_question">Do the most frequently prescribed medicines also
+        fluctuate the most?</p>
+      <p class="note">
+        <strong>Cardiovascular medicines</strong> show both the highest monthly 
+        dispensing rates and a relatively wide spread. 
+        In contrast, respiratory and musculoskeletal medicines 
+        remain more tightly clustered, 
+        revealing differences in the consistency of medicine use.
+      </p>
     </div>
 
-    <p class="note">Source: AIHW HWE-099, PBS Rates ATC1. Excludes source code Z and the small antiparasitic category from these comparisons; these exclusions should be documented and reviewed.</p>
+    <p class="note_question">The Bigger Picture:</p>
+
+    <p class="note">
+      Australia's prescription patterns reveal a changing landscape
+      of medicine use. While some therapeutic categories
+      have grown, others have declined or remained
+      relatively stable. But these national trends only
+      tell part of the story.
+      <strong>Do Australians of different ages rely
+      on the same medicines?</strong>
+    </p>
   </section>
 
   <!-- SECTION 02 -->
@@ -65,7 +107,18 @@
         three age groups and six selected medicine categories in 2023.
         Darker colours represent higher prescription rates per resident.
       </p>
-      <div id="age-medicine-heatmap" class="chart"></div>
+      <div id="age-medicine-small-multiples" class="chart"></div>
+      <p class="note_question">Does age change the medicines Australians
+        rely on?</p>
+      <p class="note">
+        The answer is striking. Nervous
+        system medicines and antiinfectives lead among
+        children aged 0 - 18, while cardiovascular medicines
+        dominate among those aged 65 and over. What appeared
+        to be a single national prescribing pattern now
+        reveals very different medicine needs across
+        generations.
+      </p>
     </div>
 
     <div class="panel">
@@ -77,6 +130,16 @@
         between age groups.
       </p>
       <div id="age-medicine-range" class="chart"></div>
+      <p class="note_question">Just how wide is the generation gap's medicine use?</p>
+      <p class="note">
+        <strong>Cardiovascular prescriptions
+        show the most dramatic difference</strong>, ranging from
+        almost zero to approximately 1.35 prescriptions
+        per resident each month. Meanwhile, antiinfective
+        and respiratory medicines show much narrower gaps.
+        Clearly, age-related differences are far more
+        pronounced for some medicine categories than others.
+      </p>
     </div>
 
     <div class="panel">
@@ -88,13 +151,27 @@
         percentages within each age group.
       </p>
       <div id="age-medication-mosaic" class="chart"></div>
+      <p class="note_question">Does growing older mean relying on more medicines?</p> 
+      <p class="note">
+        In 2022, around half of children
+        aged 0 - 17 used no PBS medication types, compared
+        with only about 5% of Australians aged 65 and over.
+        Among older Australians, using <strong>five or more medication
+        types was far more common</strong>. The story shifts from
+        <em>which medicines people use</em> to
+        <em>how many different medicines they rely on</em>.
+      </p>
     </div>
 
+    <p class="note_question">The Bigger Picture:</p>
     <p class="note">
-      Sources: AIHW HWE-098, PBS prescriptions by ATC Level 1 medicine group;
-      ABS National Health Survey 2022, Table 22.3.
-      The AIHW and ABS datasets use different age groupings and measures
-      and should not be interpreted as directly equivalent.
+      Age shapes not
+      only which medicines Australians use, but also how
+      many they rely on. Older Australians generally have
+      higher prescription rates and use more medication
+      types. Yet age is only one piece of the puzzle.
+      <strong>Could where Australians live reveal another
+      divide in medicine use?</strong>
     </p>
   </section>
 
@@ -116,7 +193,27 @@
       in 2025. Darker colours indicate higher dispensing rates.
       Rates are not annual prescription totals.
     </p>
-    <div id="state-choropleth" class="chart"></div>
+    <div class="map-zoom-container">
+
+      <div class="map-zoom-controls">
+        <button type="button" id="map-zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" id="map-zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" id="map-zoom-reset">Reset</button>
+      </div>
+
+      <div id="state-choropleth" class="chart"></div>
+
+    </div>
+    <p class="note_question">Does where you live make a difference?</p>
+    <p class="note">
+      In 2025, <strong>Tasmania recorded one of the highest monthly
+      prescription rates</strong>, while the Northern Territory
+      stood out with a much lower rate. After seeing how
+      medicine use differs by age, this map reveals another
+      layer of variation in dispensing patterns: Australia's
+      states and territories do not share the same
+      prescription rates.
+    </p>
   </div>
 
   <!-- MAP 2: PROPORTIONAL SYMBOL MAP -->
@@ -130,6 +227,16 @@
       populations or greater total prescription counts.
     </p>
     <div id="lga-symbol-map" class="chart"></div>
+    <p class="note_question">Which parts of Australia stand out?</p>
+    <p class="note">
+      <strong>Tasmania leads with approximately 1.31 monthly
+      prescriptions per resident, more than double the
+      Northern Territory's 0.64</strong>. Meanwhile, Queensland
+      and New South Wales share similar rates of 1.04.
+      These differences raise another question: <strong>What
+      happens when we reshape the map to make prescription
+      rates, rather than geography, the focus?</strong>
+    </p>
   </div>
 
   
@@ -137,56 +244,93 @@
   <div class="panel">
     <h3>How Do State Prescription Rates Compare Without Geographic Area?</h3>
     <p class="note">
-      Each circle represents an Australian state or territory.
-      Circle area is proportional to the mean monthly PBS scripts
-      per resident in 2025, while darker blue indicates higher rates.
-      Circles are repositioned to prevent overlap while approximately
-      preserving geographic relationships.
-      Distances and positions are schematic.
+      Each circle represents an Australian state or territory. 
+      Circle area is proportional to the average monthly 
+      PBS prescriptions per resident in 2025, 
+      while darker bluish-green shades indicate higher rates. 
+      Circles are repositioned to reduce overlap while approximately preserving 
+      geographic relationships. Distances and positions are schematic.
     </p>
     <div id="state-dorling" class="chart"></div>
+  
+  <div class="dorling-custom-legend">
 
-    <div class="dorling-custom-legend">
     <div class="dorling-legend-title">
-        Mean monthly PBS scripts per resident
+      Mean Monthly PBS Scripts per Resident (2025)
     </div>
 
     <div class="dorling-legend-items">
-        <div class="dorling-legend-item">
-        <span class="dorling-circle" style="
-            width: 24px;
-            height: 24px;
-            background-color: #b8d7eb;
-        "></span>
+
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 36px; height: 36px; background: #D9F3E9;">
+          </span>
+        </div>
         <span>0.5</span>
-        </div>
+      </div>
 
-        <div class="dorling-legend-item">
-        <span class="dorling-circle" style="
-            width: 34px;
-            height: 34px;
-            background-color: #639bc4;
-        "></span>
-        <span>1.0</span>
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 41px; height: 41px; background: #9ADDC5;">
+          </span>
         </div>
+        <span>0.7</span>
+      </div>
 
-        <div class="dorling-legend-item">
-        <span class="dorling-circle" style="
-            width: 42px;
-            height: 42px;
-            background-color: #175f9b;
-        "></span>
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 47px; height: 47px; background: #4FBE98;">
+          </span>
+        </div>
+        <span>0.9</span>
+      </div>
+
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 52px; height: 52px; background: #009E73;">
+          </span>
+        </div>
+        <span>1.1</span>
+      </div>
+
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 56px; height: 56px; background: #00845F;">
+          </span>
+        </div>
+        <span>1.3</span>
+      </div>
+
+      <div class="dorling-legend-item">
+        <div class="dorling-circle-container">
+          <span class="dorling-circle"
+                style="width: 60px; height: 60px; background: #006747;">
+          </span>
+        </div>
         <span>1.5</span>
-        </div>
+      </div>
     </div>
 
     <p class="dorling-legend-note">
-        Larger and darker circles indicate higher prescription rates.
+      Larger and darker circles indicate higher prescription rates.
     </p>
-    </div>
+    <p class="note_question">What if Australia's geography no longer dominated the picture?</p> 
+    <p class="note">
+      With states representedby circles, Tasmania's high 
+      prescription rate becomesimpossible to overlook, 
+      while the Northern Territory appears much smaller and lighter. 
+      This reinforces an important discovery: <strong> state's geographic size
+      does not determine its prescription rate</strong>. <strong>But could
+      differences within communities reveal an even deeper story?</strong>
+    </p>
 
   </div>
-
+</div>
 
   <!-- SEIFA TRENDS -->
   <div class="panel">
@@ -203,20 +347,33 @@
       2013 to 2023. SEIFA describes areas, not the
       socioeconomic circumstances of individual residents.
     </p>
-    <div id="seifa-trends" class="chart"></div>
-  </div>
-
-  <p class="note">
-    Sources: AIHW HWE-098, PBS prescriptions by geographic area;
-    AIHW HWE-099, PBS Rates by Remoteness and SEIFA;
-    Australian Bureau of Statistics, ASGS 2021 State and Territory
-    boundaries and ASGS 2025 Local Government Area boundaries.
-    Geographic dispensing rates should not be interpreted as direct
-    measures of healthcare access or disease prevalence.
+    <div id="seifa-heatmap" class="chart"></div>
+  <p class="note_question">
+    Does socioeconomic disadvantage reveal another divide?
   </p>
+  <p class="note">
+    Across 2013 - 2023, <strong>the most disadvantaged areas (Q1)
+    consistently recorded higher prescription rates than
+    the least disadvantaged (Q5)</strong>. By 2023, the gap was
+    approximately 0.15 monthly prescriptions per resident.
+    This suggests that Australia's medicine use varies
+    not only by location, but also by the socioeconomic
+    characteristics of communities.
+  </p>
+  </div>
+  <p class="note_question">The Bigger Picture:</p>
+  <p class="note">
+  Australia's prescription patterns reveal more than differences
+  between states. From Tasmania's higher dispensing
+  rates to the divide between disadvantaged and
+  advantaged areas, medicine use varies across
+  communities. But these patterns raise a deeper
+  question: <strong>Could changes in Australians'
+  chronic health conditions help us understand
+  their evolving healthcare needs?</strong>
+</p>
+
 </section>
-
-
 
 <!-- SECTION 04 -->
 <section id="needs">
@@ -229,7 +386,7 @@
     healthcare needs?
   </p>
 
-  <p>
+  <p class="note">
     Prescription patterns provide one perspective on
     healthcare needs. Australia's National Health Survey
     provides another, showing how the prevalence of
@@ -249,11 +406,49 @@
     </p>
 
     <div id="chronic-small-multiples" class="chart"></div>
+
+    <p class="note_question">Are more Australians living with chronic conditions?</p>
+    <p class="note">
+      The proportion reporting <strong>no selected chronic conditions
+      fell from approximately 58% in 2008 to 50% in 2022</strong>.
+      Meanwhile, the <strong>proportions reporting one, two, or
+      three or more conditions gradually increased.
+      This suggests a growing burden of chronic conditions</strong>,
+      adding another dimension to the medicine-use patterns
+      explored earlier.
+    </p>
   </div>
 
+  
+<!-- CHART 2: LOLLIPOP CHART -->
+<div class="panel">
+  <h3>How Has the Prevalence of Chronic Conditions Changed Between 2008 and 2022?</h3>
+
+  <p>
+    This lollipop chart compares the age-standardised percentage of
+    Australians reporting different numbers of selected chronic conditions
+    in 2008 and 2022. It highlights changes in prevalence across
+    the four condition-count groups.
+  </p>
+
+  <div id="chronic-lollipop" class="chart"></div>
+  <p class="note_question">
+    What changed over these 14 years?
+  </p>
+
+  <p class="note">
+    In 2008, nearly 58% of Australians reported no
+    selected chronic conditions. By 2022, that figure
+    had fallen to 50.1%, while the <strong>proportion reporting
+    two or more conditions rose from 16.5% to 21.9%.
+    This shift suggests that managing multiple chronic
+    conditions is becoming an increasingly important
+    part of Australia's healthcare story.</strong>
+  </p>
+</div>
 
 
-<!-- CHART 2: WAFFLE CHART -->
+<!-- CHART 3: WAFFLE CHART -->
 <div class="panel">
   <h3>How Many Australians Report at Least One Selected Chronic Condition?</h3>
 
@@ -301,25 +496,40 @@
     </div>
 
   </div>
-</div>
-
-
-  <h3>What Does This Tell Us?</h3>
-
-  <p>
-    The proportion of Australians reporting at least one
-    selected chronic condition increased from 42.2% in
-    2007 - 08 to 49.9% in 2022. This suggests that managing
-    long-term health conditions remains an important
-    consideration for Australia's healthcare system.
-    However, these survey results cannot establish why
-    prescription dispensing rates have changed.
+  <p class="note_question">
+    What does Australia's changing health landscape
+    look like today?
   </p>
 
   <p class="note">
-    Source: Australian Bureau of Statistics,
-    National Health Survey 2022, Table 1.3.
-    Age-standardised proportions of persons.
+    Imagine a room of 100 Australians. In 2022,
+    approximately 50 would report at least one selected
+    chronic condition. After exploring differences in
+    medicine use across age groups, regions and
+    socioeconomic communities, this finding reminds
+    us why understanding Australia's evolving healthcare
+    needs matters.
+  </p>
+</div>
+
+
+  <p class="note_question">One Nation, Different Healthcare Needs</p>
+
+  <p class="note">
+    Australia's medicine story is not the same for everyone.
+    Over time, prescription patterns have shifted, revealing
+    <strong>differences across medicine categories, age groups,
+    regions and socioeconomic communities</strong>. Meanwhile,
+    nearly half of Australians reported at least one
+    selected chronic condition in 2022.
+  </p>
+
+  <p class="note_question">The key takeaway?</p> 
+  <p class="note">
+    <strong>Understanding Australia's healthcare needs requires looking beyond
+    national averages</strong>. Prescription patterns and chronic
+    health conditions offer different but complementary
+    perspectives on a changing population.
   </p>
 </section>
 
@@ -331,7 +541,7 @@
   <p class="attribution-intro">Data and geographic boundaries used to create the visualisations in this dashboard.</p>
 
   <div class="attribution-entry">
-    <h3>Data Source 1 — AIHW HWE-098</h3>
+    <h3>Data Source 1 - AIHW HWE-098</h3>
     <p><strong>Full Source Name:</strong> PBS prescriptions by ATC Level 1 medicine group</p>
     <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
     <p><strong>Publication Year:</strong> 2026 (last updated 28 July 2026)</p>
@@ -344,7 +554,7 @@
   </div>
 
   <div class="attribution-entry">
-    <h3>Data Source 2 — AIHW HWE-099</h3>
+    <h3>Data Source 2 - AIHW HWE-099</h3>
     <p><strong>Full Source Name:</strong> PBS Rates (ATC1, Remoteness and SEIFA)</p>
     <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
     <p><strong>Publication Year:</strong> 2024 (last updated 26 September 2024)</p>
@@ -357,7 +567,7 @@
   </div>
 
   <div class="attribution-entry">
-    <h3>Data Source 3 — ABS National Health Survey</h3>
+    <h3>Data Source 3 - ABS National Health Survey</h3>
     <p><strong>Full Source Name:</strong> National Health Survey 2022 (Tables 1.3 and 22.3)</p>
     <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
     <p><strong>Year:</strong> 2023 (2022 survey reference year)</p>
@@ -366,8 +576,8 @@
   </div>
 
   <div class="attribution-entry">
-    <h3>Geographic Boundary Source — ABS ASGS</h3>
-    <p><strong>Full Source Name:</strong> Australian Statistical Geography Standard (ASGS), Edition 3 — Digital Boundary Files</p>
+    <h3>Data Source 4 - Geographic Boundary Source - ABS ASGS</h3>
+    <p><strong>Full Source Name:</strong> Australian Statistical Geography Standard (ASGS), Edition 3 - Digital Boundary Files</p>
     <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
     <p><strong>Boundary Years:</strong> 2021 (states and territories); 2025 (Local Government Areas)</p>
     <p><strong>Data Source:</strong> <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files" target="_blank" rel="noopener noreferrer">ABS Digital Boundary Files</a></p>
@@ -378,36 +588,248 @@
   <p class="footer-credit">Visualisation by Jason Yeap Lee Ming (31581412) | FIT3179 Data Visualisation 2 | 2026</p>
 </footer>
 
+
 <script>
   const options = {
     actions: false,
     renderer: 'svg'
   };
 
+  // ============================================
+  // CHOROPLETH MAP: INTERACTIVE ZOOM AND PAN
+  // ============================================
+
+  function enableChoroplethZoom(containerId) {
+    const container = document.querySelector(containerId);
+    const svg = container?.querySelector('svg');
+
+    if (!svg) {
+      console.error('Choropleth SVG not found.');
+      return;
+    }
+
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+
+    let dragging = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    const minScale = 1;
+    const maxScale = 8;
+
+    svg.style.transformOrigin = '0 0';
+    svg.style.touchAction = 'none';
+
+    function updateTransform() {
+      svg.style.transform =
+        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    function zoomAt(factor, clientX, clientY) {
+      const rect = svg.getBoundingClientRect();
+
+      // Convert the mouse position to the SVG's
+      // current transformed coordinate system.
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      const newScale = Math.max(
+        minScale,
+        Math.min(maxScale, scale * factor)
+      );
+
+      const ratio = newScale / scale;
+
+      translateX = clientX - container.getBoundingClientRect().left
+        - (clientX - container.getBoundingClientRect().left - translateX) * ratio;
+
+      translateY = clientY - container.getBoundingClientRect().top
+        - (clientY - container.getBoundingClientRect().top - translateY) * ratio;
+
+      scale = newScale;
+
+      if (scale === 1) {
+        translateX = 0;
+        translateY = 0;
+      }
+
+      updateTransform();
+    }
+
+    // Mouse wheel zoom
+    svg.addEventListener('wheel', (event) => {
+      event.preventDefault();
+
+      zoomAt(
+        event.deltaY < 0 ? 1.2 : 1 / 1.2,
+        event.clientX,
+        event.clientY
+      );
+    }, { passive: false });
+
+    // Drag to pan
+    svg.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || scale === 1) return;
+
+      dragging = true;
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      svg.setPointerCapture(event.pointerId);
+    });
+
+    svg.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+
+      translateX += event.clientX - lastX;
+      translateY += event.clientY - lastY;
+
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      updateTransform();
+    });
+
+    svg.addEventListener('pointerup', () => {
+      dragging = false;
+    });
+
+    svg.addEventListener('pointercancel', () => {
+      dragging = false;
+    });
+
+    // Zoom buttons
+    function getCenter() {
+      const rect = container.getBoundingClientRect();
+
+      return {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+      };
+    }
+
+    document.getElementById('map-zoom-in')
+      ?.addEventListener('click', () => {
+        const center = getCenter();
+        zoomAt(1.4, center.x, center.y);
+      });
+
+    document.getElementById('map-zoom-out')
+      ?.addEventListener('click', () => {
+        const center = getCenter();
+        zoomAt(1 / 1.4, center.x, center.y);
+      });
+
+    document.getElementById('map-zoom-reset')
+      ?.addEventListener('click', () => {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
+      });
+  }
+
+  // ============================================
+  // EMBED ALL DASHBOARD VISUALISATIONS
+  // ============================================
+
   Promise.all([
-    // Section 01
-    vegaEmbed('#national-trends', 'js/national_category_trends.vg.json', options),
-    vegaEmbed('#category-slope', 'js/atc1_slope.vg.json', options),
-    vegaEmbed('#category-boxplot', 'js/category_boxplot.vg.json', options),
 
-    // Section 02
-    vegaEmbed('#age-medicine-heatmap', 'js/age_medicine_heatmap.vg.json', options),
-    vegaEmbed('#age-medicine-range', 'js/age_medicine_range.vg.json', options),
-    vegaEmbed('#age-medication-mosaic', 'js/age_medication_mosaic.vg.json', options),
+    // SECTION 01
+    vegaEmbed(
+      '#national-trends',
+      'js/national_category_trends.vg.json',
+      options
+    ),
 
-    // Section 03
-    vegaEmbed('#state-choropleth', 'js/pbs_state_choropleth.vg.json', options),
-    vegaEmbed('#lga-symbol-map', 'js/pbs_lga_symbols.vg.json', options),
-    vegaEmbed('#state-dorling', 'js/pbs_state_dorling.vg.json', options),
-    vegaEmbed('#seifa-trends', 'js/seifa_trends.vg.json', options),
+    vegaEmbed(
+      '#category-slope',
+      'js/atc1_slope.vg.json',
+      options
+    ),
 
-    // Section 04
-    vegaEmbed('#chronic-small-multiples', 'js/chronic_small_multiples.vg.json', options),
-    vegaEmbed('#chronic-waffle', 'js/chronic_waffle.vg.json', options)
+    vegaEmbed(
+      '#category-boxplot',
+      'js/category_boxplot.vg.json',
+      options
+    ),
+
+    // SECTION 02
+    vegaEmbed(
+      '#age-medicine-small-multiples',
+      'js/age_medicine_small_multiples.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#age-medicine-range',
+      'js/age_medicine_range.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#age-medication-mosaic',
+      'js/age_medication_mosaic.vg.json',
+      options
+    ),
+
+    // SECTION 03
+
+    // Choropleth with zoom and pan
+    vegaEmbed(
+      '#state-choropleth',
+      'js/pbs_state_choropleth.vg.json',
+      options
+    ).then(result => {
+      enableChoroplethZoom('#state-choropleth');
+      return result;
+    }),
+
+    vegaEmbed(
+      '#lga-symbol-map',
+      'js/pbs_lga_symbols.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#state-dorling',
+      'js/pbs_state_dorling.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#seifa-heatmap',
+      'js/pbs_seifa_heatmap.vg.json',
+      options
+    ),
+
+    // SECTION 04
+    vegaEmbed(
+      '#chronic-small-multiples',
+      'js/chronic_small_multiples.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#chronic-lollipop',
+      'js/chronic_lollipop.vg.json',
+      options
+    ),
+
+    vegaEmbed(
+      '#chronic-waffle',
+      'js/chronic_waffle.vg.json',
+      options
+    )
+
   ]).catch(error => {
     console.error('Error loading dashboard charts:', error);
   });
+
 </script>
+
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Proportional symbol map of 2025 mean monthly PBS scripts per resident across Australian LGAs. Circle AREA encodes rate, not absolute prescriptions.",
+  "description": "Graduated symbol map of mean monthly PBS prescriptions per resident across Australian states and territories in 2025.",
   "width": "container",
-  "height": 500,
+  "height": 520,
   "projection": {
     "type": "mercator"
   },
@@ -17,73 +17,192 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#edf1f4",
-        "stroke": "#b3c0c9",
-        "strokeWidth": 0.65
+        "fill": "#F3F1EF",
+        "stroke": "#D3CDC8",
+        "strokeWidth": 0.75
       }
     },
     {
       "data": {
-        "url": "data/pbs_lga_points_2025.csv"
-      },
-      "mark": {
-        "type": "circle",
-        "color": "#347DA5",
-        "opacity": 0.55,
-        "stroke": "#FFFFFF",
-        "strokeWidth": 0.3
-      },
-      "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
-        "size": {
-          "field": "scripts_per_erp_monthly_mean",
-          "type": "quantitative",
-          "title": "Mean monthly scripts per resident",
-          "scale": {
-            "domain": [
-              0,
-              3
-            ],
-            "range": [
-              0,
-              120
-            ]
-          },
-          "legend": {
-            "orient": "bottom"
-          }
-        },
-        "tooltip": [
+        "values": [
           {
-            "field": "lga_name",
-            "type": "nominal",
-            "title": "LGA"
+            "state": "WA",
+            "longitude": 121.0,
+            "latitude": -26.0
           },
           {
-            "field": "state",
-            "type": "nominal",
-            "title": "State"
+            "state": "NT",
+            "longitude": 133.5,
+            "latitude": -19.5
           },
           {
-            "field": "scripts_per_erp_monthly_mean",
-            "type": "quantitative",
-            "format": ".3f",
-            "title": "Mean monthly scripts per resident"
+            "state": "SA",
+            "longitude": 135.0,
+            "latitude": -30.0
+          },
+          {
+            "state": "QLD",
+            "longitude": 145.0,
+            "latitude": -22.5
+          },
+          {
+            "state": "NSW",
+            "longitude": 147.0,
+            "latitude": -32.0
+          },
+          {
+            "state": "VIC",
+            "longitude": 144.5,
+            "latitude": -37.5
+          },
+          {
+            "state": "TAS",
+            "longitude": 146.5,
+            "latitude": -42.0
+          },
+          {
+            "state": "ACT",
+            "longitude": 149.1,
+            "latitude": -35.3
           }
         ]
-      }
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/pbs_state_2025.csv"
+            },
+            "key": "state",
+            "fields": [
+              "scripts_per_erp_monthly_mean",
+              "months_observed"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.scripts_per_erp_monthly_mean)"
+        },
+        {
+          "calculate": "datum.scripts_per_erp_monthly_mean < 0.9 ? 'Below 0.9' : datum.scripts_per_erp_monthly_mean < 1.2 ? '0.9–<1.2' : '1.2 or more'",
+          "as": "rate_class"
+        },
+        {
+          "calculate": "datum.state + '  ' + format(datum.scripts_per_erp_monthly_mean, '.2f')",
+          "as": "annotation"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "color": "#B34A26",
+            "opacity": 0.85,
+            "stroke": "#FFFFFF",
+            "strokeWidth": 1.2
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "rate_class",
+              "type": "ordinal",
+              "scale": {
+                "domain": [
+                  "Below 0.9",
+                  "0.9–<1.2",
+                  "1.2 or more"
+                ],
+                "range": [
+                  600,
+                  2500,
+                  9000
+                ]
+              },
+              "legend": {
+                "title": "Average Monthly PBS Prescriptions per Resident (2025)",
+                "orient": "bottom",
+                "direction": "horizontal",
+                "titleLimit": 600,
+                "labelLimit": 200,
+                "labelFont": "Arial",
+                "titleFont": "Arial",
+                "labelFontSize": 12,
+                "titleFontSize": 13,
+                "labelFontWeight": "bold",
+                "titleFontWeight": "bold",
+                "symbolFillColor": "#B34A26",
+                "symbolStrokeColor": "#FFFFFF",
+                "labelExpr": "datum.label === 'Below 0.9' ? 'Low: <0.9' : datum.label === '0.9–<1.2' ? 'Moderate: 0.9–<1.2' : datum.label === '1.2 or more' ? 'High: ≥1.2' : datum.label"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "state",
+                "type": "nominal",
+                "title": "State/territory"
+              },
+              {
+                "field": "rate_class",
+                "type": "nominal",
+                "title": "Rate category"
+              },
+              {
+                "field": "scripts_per_erp_monthly_mean",
+                "type": "quantitative",
+                "format": ".3f",
+                "title": "Mean monthly scripts per resident"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "font": "Arial",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "color": "#243746",
+            "align": "left",
+            "baseline": "middle",
+            "dx": {
+              "expr": "datum.state === 'TAS' ? 28 : 22"
+            }
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "annotation",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
     }
   ],
   "config": {
     "view": {
       "stroke": null
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
     }
   }
 }
+
+
