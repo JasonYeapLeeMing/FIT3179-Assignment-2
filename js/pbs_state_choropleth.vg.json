@@ -69,7 +69,7 @@
             "field": "scripts_per_erp_monthly_mean",
             "type": "quantitative",
             "format": ".3f",
-            "title": "Mean monthly scripts per resident"
+            "title": "Mean monthly perscriptions per resident"
           },
           {
             "field": "months_observed",
