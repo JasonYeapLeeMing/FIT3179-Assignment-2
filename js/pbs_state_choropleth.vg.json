@@ -44,7 +44,7 @@
         "color": {
           "field": "scripts_per_erp_monthly_mean",
           "type": "quantitative",
-          "title": "Mean monthly scripts per resident",
+          "title": "Mean monthly perscriptions per resident",
           "scale": {
             "range": [
               "#F8EDF3",
