@@ -36,7 +36,27 @@
 
     <div class="panel">
       <h3>How have medicine categories changed?</h3>
-      <p class="note">Click a medicine group in the legend to highlight its trend. Rates are the mean of 12 monthly rates in each year, not annual totals.</p>
+      <div class="chart-description-columns">
+
+        <p class="note">
+          Click a medicine group in the legend to highlight its trend.
+          Rates are the mean of 12 monthly rates in each year, not annual totals.
+          Higher lines indicate higher prescription rates, while upward or
+          downward trends show how rates have changed over time.
+          Each coloured line represents a medicine category, allowing readers
+          to compare changes in prescription rates over time.
+        </p>
+
+        <p class="note">
+          <strong>How to read the scale:</strong>
+          The horizontal axis shows the years from 2013 to 2023,
+          while the vertical axis shows the mean monthly prescriptions
+          per resident, starting at 0 and increasing in intervals of 0.05.
+          For example, 0.10 represents approximately 10 prescriptions
+          per 100 residents per month, not 10% of residents.
+        </p>
+
+      </div>
       <div id="national-trends" class="chart"></div>
       <p class="note_question">What happens when a nation's medicine needs begin to shift?</p>
       <p class="note">
@@ -51,7 +71,14 @@
 
     <div class="panel">
       <h3>Which Medicine Groups Saw the Biggest Changes Between 2013 and 2023?</h3>
-      <p class="note">Compare average monthly prescriptions per resident across six selected medicine groups. Upward slopes indicate increases, while downward slopes indicate decreases.</p>
+      <div class="chart-description-columns">
+        <p class="note">Compare average monthly prescriptions per resident across six selected medicine groups. Upward slopes indicate increases, while downward slopes indicate decreases.
+          Each coloured line connects the prescription rates in 2013 and 2023, showing whether a medicine category increased or decreased.
+        </p>
+        <p class="note"><strong>How to read the scale:</strong> The vertical axis shows the average number of monthly prescriptions per resident, 
+          starting at 0 and increasing in intervals of 0.05. For example, 0.10 represents approximately 10 prescriptions per 100 residents per month, while 0.30 represents 30.
+        </p>
+      </div>
       <div id="category-slope" class="chart"></div>
       <p class="note_question">Which medicines changed the most over the
         decade?</p>
@@ -68,7 +95,10 @@
 
     <div class="panel">
       <h3>How variable are monthly dispensing rates?</h3>
-      <p class="note">Each box summarises the distribution of 132 monthly observations from 2013 - 2023 for a medicine group. This is not a patient-level distribution.</p>
+      <div class="chart-description-columns">
+        <p class="note">Each box summarises the distribution of 132 monthly observations from 2013 - 2023 for a medicine group. This is not a patient-level distribution.</p>
+        <p class="note"><strong>How to read the scale:</strong> A value of 0.30 represents approximately 30 prescriptions dispensed per 100 residents each month, not 30% of residents.</p>
+      </div>
       <div id="category-boxplot" class="chart"></div>
       <p class="note_question">Do the most frequently prescribed medicines also
         fluctuate the most?</p>
@@ -102,11 +132,16 @@
 
     <div class="panel">
       <h3>Which Medicine Groups Are Most Commonly Dispensed Across Age Groups?</h3>
-      <p class="note">
-        Explore differences in average monthly prescription rates across
-        three age groups and six selected medicine categories in 2023.
-        Darker colours represent higher prescription rates per resident.
-      </p>
+      <div class="chart-description-columns">
+        <p class="note">
+          Explore differences in average monthly prescription rates across
+          three age groups and six selected medicine categories in 2023.
+          Darker colours represent higher prescription rates per resident.
+        </p>
+        <p class="note"><strong>How to read the scale:</strong> A rate of 0.50 means approximately 50 prescriptions 
+          dispensed per 100 residents each month, not 50% of residents. Each age group uses a different horizontal scale.
+        </p>
+      </div>
       <div id="age-medicine-small-multiples" class="chart"></div>
       <p class="note_question">Does age change the medicines Australians
         rely on?</p>
@@ -123,12 +158,18 @@
 
     <div class="panel">
       <h3>How Much Do Prescription Rates Differ Between Age Groups?</h3>
-      <p class="note">
-        Each range represents the lowest and highest age-specific
-        prescription rates for a medicine group in 2023.
-        Compare the spread to identify categories with larger differences
-        between age groups.
-      </p>
+      <div class="chart-description-columns">
+        <p class="note">
+          Each range represents the lowest and highest age-specific
+          prescription rates for a medicine group in 2023.
+          Compare the spread to identify categories with larger differences
+          between age groups.
+        </p>
+        <p class="note"><strong>How to read the scale:</strong> A rate of 1.00 represents approximately 100 prescriptions 
+          dispensed per 100 residents each month, not 100% of residents. Green dots indicate the lowest rates, purple dots the highest, 
+          and connecting lines show the differences between age groups.
+        </p>
+      </div>
       <div id="age-medicine-range" class="chart"></div>
       <p class="note_question">Just how wide is the generation gap's medicine use?</p>
       <p class="note">
@@ -144,12 +185,19 @@
 
     <div class="panel">
       <h3>How Does the Number of Medication Types Vary by Age?</h3>
-      <p class="note">
-        This mosaic plot compares the distribution of PBS medication-type
-        counts across age groups in 2022. Column widths represent estimated
-        age-group population sizes, while segment heights represent
-        percentages within each age group.
-      </p>
+      <div class="chart-description-columns">
+        <p class="note">
+          This mosaic plot compares the distribution of PBS medication-type
+          counts across age groups in 2022. Column widths represent estimated
+          age-group population sizes, while segment heights represent
+          percentages within each age group.
+        </p>
+        <p class="note"><strong>How to read the chart:</strong> The horizontal axis shows each age group's share of the total population 
+          across the selected age groups. Wider columns represent larger populations. 
+          The vertical axis shows the percentage of people within each age group reporting different numbers of PBS medication types. 
+          Each colour represents a different number of medication types.
+        </p>
+      </div>
       <div id="age-medication-mosaic" class="chart"></div>
       <p class="note_question">Does growing older mean relying on more medicines?</p> 
       <p class="note">
@@ -330,21 +378,25 @@
   </div>
 </div>
 
-  <!-- SEIFA TRENDS -->
+  <!-- SEIFA TRENDS Heatmap -->
   <div class="panel">
     <h3>How Do Prescription Rates Vary by Socioeconomic Quintile?</h3>
-    <p class="note">
-      SEIFA (Socio-Economic Indexes for Areas) is an ABS measure
-      of the socioeconomic characteristics of geographic areas.
-      Areas are grouped into five quintiles, from Q1
-      (most disadvantaged) to Q5 (least disadvantaged).
-    </p>
-    <p class="note">
-      This chart compares average monthly PBS prescriptions
-      per resident across socioeconomic quintiles from
-      2013 to 2023. SEIFA describes areas, not the
-      socioeconomic circumstances of individual residents.
-    </p>
+    <div class="chart-description-columns">
+      <p class="note">
+        SEIFA (Socio-Economic Indexes for Areas) is an ABS (Australian Bureau of Statistics) measure
+        of the socioeconomic characteristics of geographic areas.
+        Areas are grouped into five quintiles, from Q1
+        (most disadvantaged) to Q5 (least disadvantaged). 
+        This chart compares average monthly PBS prescriptions
+        per resident across socioeconomic quintiles from
+        2013 to 2023. 
+      </p>
+      <p class="note"><strong>How to read the chart:</strong> The horizontal axis shows the years from 2013 to 2023, 
+        while the vertical axis groups areas into five socioeconomic quintiles, from Q1 (most disadvantaged) to Q5 (least disadvantaged). 
+        Each cell shows the average monthly prescriptions per resident, with darker purple indicating higher rates. 
+        For example, 0.618 represents approximately 62 prescriptions per 100 residents per month, not 61.8% of residents.
+      </p>
+    </div>
     <div id="seifa-heatmap" class="chart"></div>
   <p class="note_question">
     Does socioeconomic disadvantage reveal another divide?
@@ -396,12 +448,20 @@
   <div class="panel">
     <h3>How Has the Number of Chronic Conditions Changed Over Time?</h3>
 
-    <p class="note">
-      Each panel shows the age-standardised percentage
-      of Australians reporting a different number of
-      selected chronic conditions across five ABS survey
-      periods. All panels use the same 0 - 60% vertical scale.
-    </p>
+    <div class="chart-description-columns">
+
+      <p class="note">
+        Each panel shows the age-standardised percentage
+        of Australians reporting a different number of
+        selected chronic conditions across five ABS survey
+        periods. All panels use the same 0 - 60% vertical scale.
+      </p>
+
+      <p class="note"><strong>How to read the chart:</strong> The horizontal axis shows the ABS survey periods from 2008 to 2022, 
+        while the vertical axis shows the age-standardised percentage of Australians reporting selected chronic conditions. 
+        Each panel represents a different number of conditions (0, 1, 2 or 3+).
+      </p>
+    </div>
 
     <div id="chronic-small-multiples" class="chart"></div>
 
@@ -422,12 +482,22 @@
 <div class="panel">
   <h3>How Has the Prevalence of Chronic Conditions Changed Between 2008 and 2022?</h3>
 
-  <p>
-    This lollipop chart compares the age-standardised percentage of
-    Australians reporting different numbers of selected chronic conditions
-    in 2008 and 2022. It highlights changes in prevalence across
-    the four condition-count groups.
-  </p>
+  <div class="chart-description-columns">
+
+    <p class="note">
+      This lollipop chart compares the age-standardised percentage of
+      Australians reporting different numbers of selected chronic conditions
+      in 2008 and 2022. It highlights changes in prevalence across
+      the four condition-count groups. Both panels use the same 0 - 60% scale for direct comparison.
+    </p>
+
+    <p class="note"><strong>How to read the chart:</strong> Each panel represents a survey year (2008 or 2022). 
+      The horizontal axis shows the age-standardised percentage of Australians, 
+      while the vertical axis groups people by the number of selected chronic conditions reported (0, 1, 2 or 3+). 
+      Longer lines and dots positioned further to the right indicate higher percentages.
+    </p>
+  </div>
+
 
   <div id="chronic-lollipop" class="chart"></div>
   <p class="note_question">
@@ -511,80 +581,124 @@
 </div>
 
 
-  <p class="note_question">One Nation, Different Healthcare Needs</p>
+  <div class="conclusion-columns">
 
-  <p class="note">
-    Australia's medicine story is not the same for everyone.
-    Over time, prescription patterns have shifted, revealing
-    <strong>differences across medicine categories, age groups,
-    regions and socioeconomic communities</strong>. Meanwhile,
-    nearly half of Australians reported at least one
-    selected chronic condition in 2022.
-  </p>
+    <!-- LEFT COLUMN -->
+    <div class="conclusion-item">
+      <p class="note_question">
+        One Nation, Different Healthcare Needs
+      </p>
 
-  <p class="note_question">The key takeaway?</p> 
-  <p class="note">
-    <strong>Understanding Australia's healthcare needs requires looking beyond
-    national averages</strong>. Prescription patterns and chronic
-    health conditions offer different but complementary
-    perspectives on a changing population.
-  </p>
+      <p class="note">
+        Australia's medicine story is not the same for everyone.
+        Over time, prescription patterns have shifted, revealing
+        <strong>
+          differences across medicine categories, age groups,
+          regions and socioeconomic communities
+        </strong>.
+        Meanwhile, nearly half of Australians reported at least
+        one selected chronic condition in 2022.
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="conclusion-item">
+      <p class="note_question">
+        The key takeaway?
+      </p>
+
+      <p class="note">
+        <strong>
+          Understanding Australia's healthcare needs requires
+          looking beyond national averages.
+        </strong>
+        Prescription patterns and chronic health conditions
+        offer different but complementary perspectives on
+        a changing population.
+      </p>
+    </div>
+
+  </div>
 </section>
 
 
 </main>
 
+
 <footer id="sources" class="attribution-footer">
   <h2>Source and Attribution</h2>
-  <p class="attribution-intro">Data and geographic boundaries used to create the visualisations in this dashboard.</p>
 
-  <div class="attribution-entry">
-    <h3>Data Source 1 - AIHW HWE-098</h3>
-    <p><strong>Full Source Name:</strong> PBS prescriptions by ATC Level 1 medicine group</p>
-    <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
-    <p><strong>Publication Year:</strong> 2026 (last updated 28 July 2026)</p>
-    <p><strong>Original Data URL:</strong> <a href="https://www.aihw.gov.au/reports/medicines/pbs-monthly-data/data"
-       target="_blank"
-       rel="noopener noreferrer">
-      IHW PBS Monthly Data
-    </a></p>
-    <p><strong>Used for:</strong> Age-specific medicine comparisons, state/territory choropleth, LGA proportional symbol map and state Dorling-style cartogram.</p>
+  <p class="attribution-intro">
+    Data and geographic boundaries used to create the visualisations in this dashboard.
+  </p>
+
+  <div class="attribution-grid">
+
+    <!-- ROW 1: LEFT -->
+    <div class="attribution-entry">
+      <h3>Data Source 1 - AIHW HWE-098</h3>
+      <p><strong>Full Source Name:</strong> PBS prescriptions by ATC Level 1 medicine group</p>
+      <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
+      <p><strong>Publication Year:</strong> 2026 (last updated 28 July 2026)</p>
+      <p><strong>Original Data URL:</strong>
+        <a href="https://www.aihw.gov.au/reports/medicines/pbs-monthly-data/data"
+           target="_blank" rel="noopener noreferrer">
+          IHW PBS Monthly Data
+        </a>
+      </p>
+      <p><strong>Used for:</strong> Age-specific medicine comparisons, state/territory choropleth, LGA proportional symbol map and state Dorling-style cartogram.</p>
+    </div>
+
+    <!-- ROW 1: RIGHT -->
+    <div class="attribution-entry">
+      <h3>Data Source 2 - AIHW HWE-099</h3>
+      <p><strong>Full Source Name:</strong> PBS Rates (ATC1, Remoteness and SEIFA)</p>
+      <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
+      <p><strong>Publication Year:</strong> 2024 (last updated 26 September 2024)</p>
+      <p><strong>Original Data URL:</strong>
+        <a href="https://www.aihw.gov.au/reports/medicines/pbs-prescriptions-over-time/data"
+           target="_blank" rel="noopener noreferrer">
+          AIHW PBS Prescriptions Over Time
+        </a>
+      </p>
+      <p><strong>Used for:</strong> National medicine category trends, slope chart, boxplot and socioeconomic quintile trends.</p>
+    </div>
+
+    <!-- ROW 2: LEFT -->
+    <div class="attribution-entry">
+      <h3>Data Source 3 - ABS National Health Survey</h3>
+      <p><strong>Full Source Name:</strong> National Health Survey 2022 (Tables 1.3 and 22.3)</p>
+      <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
+      <p><strong>Year:</strong> 2023 (2022 survey reference year)</p>
+      <p><strong>Data Source:</strong>
+        <a href="https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-survey/latest-release"
+           target="_blank" rel="noopener noreferrer">
+          ABS National Health Survey
+        </a>
+      </p>
+      <p><strong>Used for:</strong> Medication-type mosaic, chronic-condition small multiples and waffle chart.</p>
+    </div>
+
+    <!-- ROW 2: RIGHT -->
+    <div class="attribution-entry">
+      <h3>Data Source 4 - Geographic Boundary Source - ABS ASGS</h3>
+      <p><strong>Full Source Name:</strong> Australian Statistical Geography Standard (ASGS), Edition 3 - Digital Boundary Files</p>
+      <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
+      <p><strong>Boundary Years:</strong> 2021 (states and territories); 2025 (Local Government Areas)</p>
+      <p><strong>Data Source:</strong>
+        <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files"
+           target="_blank" rel="noopener noreferrer">
+          ABS Digital Boundary Files
+        </a>
+      </p>
+      <p><strong>Used for:</strong> State and territory boundaries and LGA map geometry.</p>
+    </div>
+
   </div>
 
-  <div class="attribution-entry">
-    <h3>Data Source 2 - AIHW HWE-099</h3>
-    <p><strong>Full Source Name:</strong> PBS Rates (ATC1, Remoteness and SEIFA)</p>
-    <p><strong>Author/Organisation:</strong> Australian Institute of Health and Welfare (AIHW)</p>
-    <p><strong>Publication Year:</strong> 2024 (last updated 26 September 2024)</p>
-    <p><strong>Original Data URL:</strong> <a href="https://www.aihw.gov.au/reports/medicines/pbs-prescriptions-over-time/data"
-       target="_blank"
-       rel="noopener noreferrer">
-      AIHW PBS Prescriptions Over Time
-    </a></p>
-    <p><strong>Used for:</strong> National medicine category trends, slope chart, boxplot and socioeconomic quintile trends.</p>
-  </div>
-
-  <div class="attribution-entry">
-    <h3>Data Source 3 - ABS National Health Survey</h3>
-    <p><strong>Full Source Name:</strong> National Health Survey 2022 (Tables 1.3 and 22.3)</p>
-    <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
-    <p><strong>Year:</strong> 2023 (2022 survey reference year)</p>
-    <p><strong>Data Source:</strong> <a href="https://www.abs.gov.au/statistics/health/health-conditions-and-risks/national-health-survey/latest-release" target="_blank" rel="noopener noreferrer">ABS National Health Survey</a></p>
-    <p><strong>Used for:</strong> Medication-type mosaic, chronic-condition small multiples and waffle chart.</p>
-  </div>
-
-  <div class="attribution-entry">
-    <h3>Data Source 4 - Geographic Boundary Source - ABS ASGS</h3>
-    <p><strong>Full Source Name:</strong> Australian Statistical Geography Standard (ASGS), Edition 3 - Digital Boundary Files</p>
-    <p><strong>Author/Organisation:</strong> Australian Bureau of Statistics (ABS)</p>
-    <p><strong>Boundary Years:</strong> 2021 (states and territories); 2025 (Local Government Areas)</p>
-    <p><strong>Data Source:</strong> <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files" target="_blank" rel="noopener noreferrer">ABS Digital Boundary Files</a></p>
-    <p><strong>Used for:</strong> State and territory boundaries and LGA map geometry.</p>
-  </div>
-
-  <p class="attribution-method"><strong>Method note:</strong> Annual map values are means of monthly perscriptions-per-resident rates, not annual prescription totals. Maps and charts use different geographic groupings and source definitions; their rates should not be interpreted as direct measures of healthcare access or disease prevalence.</p>
   <p class="footer-credit">Visualisation by Jason Yeap Lee Ming (31581412) | FIT3179 Data Visualisation 2 | 2026</p>
 </footer>
+
 
 
 <script>

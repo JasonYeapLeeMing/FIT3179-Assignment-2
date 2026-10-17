@@ -307,17 +307,17 @@ body, p, nav, .eyebrow {
   font-weight: bold;
   line-height: 1.3;
   margin-bottom: 18px;
-  max-width: 50ch;
+  max-width: 48ch;
 }
 
 /* Source headings: sans-serif */
 .attribution-footer h3 {
-  font-family: Arial, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 28px;
   font-weight: bold;
   line-height: 1.4;
   margin-bottom: 12px;
-  max-width: 50ch;
+  max-width: 48ch;
 }
 
 /* All footer paragraphs */
@@ -325,9 +325,8 @@ body, p, nav, .eyebrow {
   font-family: Arial, sans-serif;
   font-size: 18px;
   line-height: 1.6;
-  max-width: 50ch;
+  max-width: 48ch;
   overflow-wrap: anywhere;
-  max-width: 50ch;
 }
 
 /* Source entries */
@@ -342,7 +341,7 @@ body, p, nav, .eyebrow {
   color: #176b91;
   text-decoration: underline;
   overflow-wrap: anywhere;
-  max-width: 50ch;
+  max-width: 48ch;
 }
 
 .attribution-footer a:hover {
@@ -354,16 +353,7 @@ body, p, nav, .eyebrow {
   margin-bottom: 24px;
   font-family: Arial, sans-serif;
   font-size: 18px;
-  max-width: 50ch;
-}
-
-/* Methodology note */
-.attribution-method {
-  margin-top: 24px;
-  margin-bottom: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  max-width: 50ch;
+  max-width: 48ch;
 }
 
 /* Footer credit */
@@ -371,15 +361,48 @@ body, p, nav, .eyebrow {
   margin-top: 24px;
   font-size: 18px;
   font-family: Arial, sans-serif;
-  max-width: 50ch;
+  max-width: 48ch;
 }
+
+
+/* Two-column source attribution layout */
+.attribution-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 50px;
+    row-gap: 32px;
+    align-items: start;
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+/* Individual data source entries */
+.attribution-grid .attribution-entry {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+/* Preserve readable line lengths */
+.attribution-grid .attribution-entry h3,
+.attribution-grid .attribution-entry p {
+    max-width: 48ch;
+}
+
+/* Stack into one column on narrow screens */
+@media (max-width: 700px) {
+    .attribution-grid {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+    }
+}
+
 
 .panel h3 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 32px;
   font-weight: bold;
   margin: 0 0 8px;
-  max-width: 50ch;
+  max-width: 48ch;
 }
 
 .main-subtitle {
@@ -387,6 +410,67 @@ body, p, nav, .eyebrow {
   font-size: 20px;
   font-weight: normal;
   line-height: 1.5;
-  max-width: 50ch;
+  max-width: 48ch;
   text-align: left;
+}
+
+/* Two-column layout */
+
+.chart-description-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.chart-description-columns .note {
+  max-width: 48ch;
+  margin-top: 0;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .chart-description-columns {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.conclusion-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.conclusion-item {
+  min-width: 0;
+  font-family: Arial, sans-serif;
+}
+
+.conclusion-item .note_question {
+  font-family: Arial, sans-serif;
+  max-width: 48ch;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.conclusion-item .note {
+  font-family: Arial, sans-serif;
+  max-width: 48ch;
+  margin-top: 0;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .conclusion-columns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
