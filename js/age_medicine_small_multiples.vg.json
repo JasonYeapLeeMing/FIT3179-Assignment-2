@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Small-multiple horizontal bar charts comparing mean monthly PBS prescriptions per resident across six medicine groups within each age group in 2023.",
@@ -34,7 +35,6 @@
     "height": 310,
     "mark": {
       "type": "bar",
-      "color": "#56B4E9",
       "cornerRadiusEnd": 2
     },
     "encoding": {
@@ -76,6 +76,29 @@
           "grid": true,
           "gridColor": "#E5E7EB"
         }
+      },
+      "color": {
+        "field": "group_short",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Cardiovascular",
+            "Nervous system",
+            "Alimentary",
+            "Antiinfectives",
+            "Respiratory",
+            "Musculoskeletal"
+          ],
+          "range": [
+            "#0072B2",
+            "#CC79A7",
+            "#E69F00",
+            "#D55E00",
+            "#009E73",
+            "#56B4E9"
+          ]
+        },
+        "legend": null
       },
       "tooltip": [
         {

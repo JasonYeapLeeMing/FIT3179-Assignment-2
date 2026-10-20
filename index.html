@@ -11,28 +11,66 @@
 </head>
 
 <body>
+
 <header>
-  <h1>Medicine Use in Australia</h1>
-  <p class="main-subtitle">
-  How prescription patterns and chronic health conditions
-  offer different perspectives on Australia's changing
-  healthcare needs.
-  </p>
-  <nav>
-    <a href="#national">01 National trends</a>
-    <a href="#age">02 Age differences</a>
-    <a href="#geography">03 Geography</a>
-    <a href="#needs">04 Healthcare needs</a>
-  </nav>
+  <div class="header-layout">
+
+    <!-- LEFT: Dashboard title, subtitle and navigation -->
+    <div class="header-content">
+      <h1>Medicine Use in Australia</h1>
+
+      <p class="main-subtitle">
+        How prescription patterns and chronic health conditions
+        offer different perspectives on Australia's changing
+        healthcare needs.
+      </p>
+
+      <nav>
+        <a href="#national">01 National trends</a>
+        <a href="#age">02 Age differences</a>
+        <a href="#geography">03 Geography</a>
+        <a href="#needs">04 Healthcare needs</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT: Decorative Australian map -->
+    <div class="header-map" aria-hidden="true">
+      <div id="header-australia-map"></div>
+    </div>
+
+  </div>
 </header>
 
 <main>
 
   <!-- SECTION 01 -->
   <section id="national">
-    <div class="section-no">SECTION 01</div>
-    <h2>A Nation on Prescription</h2>
-    <p class="lead">How have prescription rates and therapeutic categories changed over time?</p>
+    <div class="section-intro">
+
+      <!-- LEFT COLUMN -->
+      <div class="section-intro-left">
+        <div class="section-no">SECTION 01</div>
+
+        <h2>A Nation on Prescription</h2>
+
+        <p class="lead">
+          How have prescription rates and therapeutic categories
+          changed over time?
+        </p>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="section-intro-right">
+        <h3>The national picture</h3>
+
+        <p>
+          Explore how medicine dispensing rates differ between
+          therapeutic categories and how these patterns have
+          evolved from 2013 to 2023.
+        </p>
+      </div>
+
+    </div>
 
     <div class="panel">
       <h3>How have medicine categories changed?</h3>
@@ -58,15 +96,21 @@
 
       </div>
       <div id="national-trends" class="chart"></div>
-      <p class="note_question">What happens when a nation's medicine needs begin to shift?</p>
-      <p class="note">
-        From 2013 to 2023, <strong>cardiovascular medicines</strong> remained the most frequently 
-        prescribed of these six categories, with rates climbing after 2019. 
-        Yet antiinfective prescriptions tell a different story, 
-        <strong>dropping sharply in 2020 as the COVID-19 pandemic began</strong>. 
-        Together, these contrasting paths reveal that Australia's medicine use 
-        is far from a single, uniform trend.
-      </p>
+      <div class="storytelling-row">
+        <p class="note_question">
+          What happens when a nation's medicine needs begin to shift?
+        </p>
+
+        <p class="note">
+          From 2013 to 2023, <strong>cardiovascular medicines</strong>
+          remained the most frequently prescribed of these six categories,
+          with rates climbing after 2019. Yet antiinfective prescriptions
+          tell a different story, <strong>dropping sharply in 2020
+          as the COVID-19 pandemic began</strong>. Together, these
+          contrasting paths reveal that Australia's medicine use is
+          far from a single, uniform trend.
+        </p>
+      </div>
     </div>
 
     <div class="panel">
@@ -80,80 +124,149 @@
         </p>
       </div>
       <div id="category-slope" class="chart"></div>
-      <p class="note_question">Which medicines changed the most over the
-        decade?</p>
-      <p class="note">
-        While cardiovascular prescriptions
-        climbed from approximately <strong>0.32 to 0.35</strong> per resident
-        each month, antiinfectives moved in the opposite
-        direction, falling from <strong>0.10 to 0.07</strong>. The contrast
-        raises an intriguing question: beyond these long-term
-        changes, how consistently were medicines dispensed
-        from month to month?
-      </p>
+      
+      <div class="storytelling-row">
+
+        <p class="note_question">
+          Which medicines changed the most over the decade?
+        </p>
+
+        <p class="note">
+          While cardiovascular prescriptions climbed from approximately
+          <strong>0.32 to 0.35</strong> per resident each month,
+          antiinfectives moved in the opposite direction, falling
+          from <strong>0.10 to 0.07</strong>. The contrast raises an
+          intriguing question: beyond these long-term changes,
+          how consistently were medicines dispensed from month to month?
+        </p>
+
+      </div>
+
     </div>
 
     <div class="panel">
       <h3>How variable are monthly dispensing rates?</h3>
       <div class="chart-description-columns">
         <p class="note">Each box summarises the distribution of 132 monthly observations from 2013 - 2023 for a medicine group. This is not a patient-level distribution.</p>
-        <p class="note"><strong>How to read the scale:</strong> A value of 0.30 represents approximately 30 prescriptions dispensed per 100 residents each month, not 30% of residents.</p>
+        <p class="note"><strong>How to read this boxplot:</strong> The line inside each box represents the median monthly
+          dispensing rate, while the box contains the middle 50%
+          of observations. Whiskers show the range of non-outlier
+          values, and individual dots indicate outliers.
+        </p>
       </div>
       <div id="category-boxplot" class="chart"></div>
-      <p class="note_question">Do the most frequently prescribed medicines also
-        fluctuate the most?</p>
-      <p class="note">
-        <strong>Cardiovascular medicines</strong> show both the highest monthly 
-        dispensing rates and a relatively wide spread. 
-        In contrast, respiratory and musculoskeletal medicines 
-        remain more tightly clustered, 
-        revealing differences in the consistency of medicine use.
-      </p>
+      
+      <div class="storytelling-row">
+
+        <p class="note_question">
+          Do the most frequently prescribed medicines also
+          fluctuate the most?
+        </p>
+
+        <p class="note">
+          <strong>Cardiovascular medicines</strong> show both the highest
+          monthly dispensing rates and a relatively wide spread.
+          In contrast, respiratory and musculoskeletal medicines
+          remain more tightly clustered, revealing differences
+          in the consistency of medicine use.
+        </p>
+
+      </div>
+
     </div>
 
-    <p class="note_question">The Bigger Picture:</p>
+    <div class="storytelling-row">
 
-    <p class="note">
-      Australia's prescription patterns reveal a changing landscape
-      of medicine use. While some therapeutic categories
-      have grown, others have declined or remained
-      relatively stable. But these national trends only
-      tell part of the story.
-      <strong>Do Australians of different ages rely
-      on the same medicines?</strong>
-    </p>
+      <div>
+        <h3>The Bigger Picture:</h3>
+        <p>
+          Australia's prescription patterns reveal a changing
+          landscape of medicine use. While some therapeutic
+          categories have grown, others have declined or remained
+          relatively stable. But these national trends only tell
+          part of the story.
+          <strong>Do Australians of different ages rely on the
+          same medicines?</strong>
+        </p>
+      </div>
+
+      <div>
+        <h3>What comes next?</h3>
+        <p>
+          National prescribing trends reveal how medicine use
+          has changed over time, but they do not show who relies
+          on these medicines. <strong>Age offers another
+          perspective</strong>, revealing how the types and
+          number of medicines used differ across generations.
+        </p>
+      </div>
+
+    </div>
+
   </section>
 
   <!-- SECTION 02 -->
   <section id="age">
-    <div class="section-no">SECTION 02</div>
-    <h2>Different Ages, Different Medicines</h2>
-    <p class="lead">National totals can conceal substantial differences between age groups.</p>
+    <div class="section-intro">
+
+      <!-- LEFT COLUMN -->
+      <div class="section-intro-left">
+        <div class="section-no">SECTION 02</div>
+
+        <h2>Different Ages, Different Medicines</h2>
+
+        <p class="lead">
+          National totals can conceal substantial differences
+          between age groups.
+        </p>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="section-intro-right">
+        <h3>Medicine across generations</h3>
+
+        <p>
+          Explore how prescription patterns vary across age groups,
+          from childhood to older adulthood, and how the number
+          and types of medicines used differ throughout life.
+        </p>
+      </div>
+
+    </div>
 
     <div class="panel">
       <h3>Which Medicine Groups Are Most Commonly Dispensed Across Age Groups?</h3>
       <div class="chart-description-columns">
         <p class="note">
-          Explore differences in average monthly prescription rates across
-          three age groups and six selected medicine categories in 2023.
-          Darker colours represent higher prescription rates per resident.
+          Explore differences in average monthly prescription rates
+          across three age groups and six selected medicine categories
+          in 2023. Each colour represents a different medicine
+          category, while bar length indicates the monthly
+          prescription rate per resident.
         </p>
         <p class="note"><strong>How to read the scale:</strong> A rate of 0.50 means approximately 50 prescriptions 
           dispensed per 100 residents each month, not 50% of residents. Each age group uses a different horizontal scale.
         </p>
       </div>
       <div id="age-medicine-small-multiples" class="chart"></div>
-      <p class="note_question">Does age change the medicines Australians
-        rely on?</p>
-      <p class="note">
-        The answer is striking. Nervous
-        system medicines and antiinfectives lead among
-        children aged 0 - 18, while cardiovascular medicines
-        dominate among those aged 65 and over. What appeared
-        to be a single national prescribing pattern now
-        reveals very different medicine needs across
-        generations.
-      </p>
+      
+      <div class="storytelling-row">
+
+        <p class="note_question">
+          Does age change the medicines Australians rely on?
+        </p>
+
+        <p class="note">
+          The answer is striking. Nervous system medicines and
+          antiinfectives lead among children aged 0–18, while
+          cardiovascular medicines dominate among those aged 65
+          and over. What appeared to be a single national prescribing
+          pattern now reveals very different medicine needs across
+          generations.
+        </p>
+
+      </div>
+
     </div>
 
     <div class="panel">
@@ -171,16 +284,24 @@
         </p>
       </div>
       <div id="age-medicine-range" class="chart"></div>
-      <p class="note_question">Just how wide is the generation gap's medicine use?</p>
-      <p class="note">
-        <strong>Cardiovascular prescriptions
-        show the most dramatic difference</strong>, ranging from
-        almost zero to approximately 1.35 prescriptions
-        per resident each month. Meanwhile, antiinfective
-        and respiratory medicines show much narrower gaps.
-        Clearly, age-related differences are far more
-        pronounced for some medicine categories than others.
-      </p>
+      
+      <div class="storytelling-row">
+
+        <p class="note_question">
+          Just how wide is the generation gap in medicine use?
+        </p>
+
+        <p class="note">
+          <strong>Cardiovascular prescriptions show the most dramatic
+          difference</strong>, ranging from almost zero to approximately
+          1.35 prescriptions per resident each month. Meanwhile,
+          antiinfective and respiratory medicines show much narrower
+          gaps. Clearly, age-related differences are far more pronounced
+          for some medicine categories than others.
+        </p>
+
+      </div>
+
     </div>
 
     <div class="panel">
@@ -199,48 +320,102 @@
         </p>
       </div>
       <div id="age-medication-mosaic" class="chart"></div>
-      <p class="note_question">Does growing older mean relying on more medicines?</p> 
-      <p class="note">
-        In 2022, around half of children
-        aged 0 - 17 used no PBS medication types, compared
-        with only about 5% of Australians aged 65 and over.
-        Among older Australians, using <strong>five or more medication
-        types was far more common</strong>. The story shifts from
-        <em>which medicines people use</em> to
-        <em>how many different medicines they rely on</em>.
-      </p>
-    </div>
+      
+      <div class="storytelling-row">
 
-    <p class="note_question">The Bigger Picture:</p>
-    <p class="note">
-      Age shapes not
-      only which medicines Australians use, but also how
-      many they rely on. Older Australians generally have
-      higher prescription rates and use more medication
-      types. Yet age is only one piece of the puzzle.
-      <strong>Could where Australians live reveal another
-      divide in medicine use?</strong>
-    </p>
+        <p class="note_question">
+          Does growing older mean relying on more medicines?
+        </p>
+
+        <p class="note">
+          In 2022, around half of children aged 0–17 used no PBS
+          medication types, compared with only about 5% of Australians
+          aged 65 and over. Among older Australians, using
+          <strong>five or more medication types was far more common</strong>.
+          The story shifts from <em>which medicines people use</em>
+          to <em>how many different medicines they rely on</em>.
+        </p>
+
+      </div>
+
+    </div>
+    
+    <div class="storytelling-row">
+
+      <div>
+        <p class="note_question">The Bigger Picture:</p>
+        <p class="note">
+          Age shapes not only which medicines Australians use,
+          but also how many they rely on. Older Australians
+          generally have higher prescription rates and use
+          more medication types. Yet age is only one piece
+          of the puzzle.
+          <strong>Could where Australians live reveal another
+          divide in medicine use?</strong>
+        </p>
+      </div>
+
+      <div>
+        <p class="note_question">What comes next?</p>
+        <p class="note">
+          Beyond age, <strong>geography and socioeconomic
+          circumstances</strong> offer another perspective on
+          medicine use. Exploring differences between Australian
+          states and territories, as well as levels of
+          socioeconomic disadvantage, reveals how prescribing
+          patterns vary across communities.
+        </p>
+      </div>
+
+    </div>
   </section>
 
 <!-- SECTION 03 -->
 <section id="geography">
-  <div class="section-no">SECTION 03</div>
-  <h2>The Geography of Medicine Use</h2>
-  <p class="lead">
-    Where are prescription rates highest across Australia,
-    and how do they differ between geographic and socioeconomic groups?
-  </p>
+  <div class="section-intro">
+
+    <!-- LEFT COLUMN -->
+    <div class="section-intro-left">
+      <div class="section-no">SECTION 03</div>
+
+      <h2>The Geography of Medicine Use</h2>
+
+      <p class="lead">
+        Where are prescription rates highest across Australia,
+        and how do they differ between geographic and
+        socioeconomic groups?
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="section-intro-right">
+      <h3>Where geography matters</h3>
+
+      <p>
+        Explore how prescription dispensing rates vary across
+        Australian states and territories, and how socioeconomic
+        disadvantage is associated with differences in medicine use.
+      </p>
+    </div>
+
+  </div>
 
   <!-- MAP 1: CHOROPLETH -->
   <div class="panel">
     <h3>How Do Prescription Rates Vary Across Australian States and Territories?</h3>
-    <p class="note">
-      This choropleth map compares the average monthly number of PBS
-      prescriptions per resident across Australian states and territories
-      in 2025. Darker colours indicate higher dispensing rates.
-      Rates are not annual prescription totals.
-    </p>
+    <div class="chart-description-columns">
+        <p class="note">
+          This choropleth map compares the average monthly number of PBS
+          prescriptions per resident across Australian states and territories
+          in 2025. Darker colours indicate higher dispensing rates.
+          Rates are not annual prescription totals.
+        </p>
+        <p class="note"><strong>How to read this map:</strong> Darker purple indicates higher dispensing rates,
+          while lighter shades indicate lower rates.
+          Hover over each state or territory to explore
+          its prescription rate.
+        </p>
+    </div>
     <div class="map-zoom-container">
 
       <div class="map-zoom-controls">
@@ -252,51 +427,99 @@
       <div id="state-choropleth" class="chart"></div>
 
     </div>
-    <p class="note_question">Does where you live make a difference?</p>
-    <p class="note">
-      In 2025, <strong>Tasmania recorded one of the highest monthly
-      prescription rates</strong>, while the Northern Territory
-      stood out with a much lower rate. After seeing how
-      medicine use differs by age, this map reveals another
-      layer of variation in dispensing patterns: Australia's
-      states and territories do not share the same
-      prescription rates.
-    </p>
+    <div class="storytelling-row">
+
+      <p class="note_question">
+        Does where you live make a difference?
+      </p>
+
+      <p class="note">
+        In 2025, <strong>Tasmania recorded one of the highest monthly
+        prescription rates</strong>, while the Northern Territory
+        stood out with a much lower rate. After seeing how
+        medicine use differs by age, this map reveals another
+        layer of variation in dispensing patterns: Australia's
+        states and territories do not share the same
+        prescription rates.
+      </p>
+
+    </div>
+    
   </div>
 
   <!-- MAP 2: PROPORTIONAL SYMBOL MAP -->
   <div class="panel">
     <h3>Where Are Prescription Rates Higher Across Australian States and Territories?</h3>
-    <p class="note">
-      This proportional symbol map compares average monthly PBS prescriptions per resident across 
-      Australian states and territories in 2025. Larger circles represent higher prescription rates, 
-      not larger populations or greater total prescription counts.
-    </p>
+    <div class="chart-description-columns">
+
+      <p class="note">
+        This proportional symbol map compares average monthly
+        PBS prescriptions per resident across Australian states
+        and territories in 2025. Larger circles represent higher
+        prescription rates, not larger populations or greater
+        total prescription counts.
+      </p>
+
+      <p class="note">
+        <strong>How to read this map:</strong>
+        Circle size represents the average monthly number of
+        prescriptions per resident. Larger circles indicate
+        higher dispensing rates, while smaller circles indicate
+        lower rates. The labels show each state's or territory's
+        corresponding value.
+      </p>
+
+    </div>
     <div id="lga-symbol-map" class="chart"></div>
-    <p class="note_question">Which parts of Australia stand out?</p>
-    <p class="note">
-      <strong>Tasmania leads with approximately 1.31 monthly
-      prescriptions per resident, more than double the
-      Northern Territory's 0.64</strong>. Meanwhile, Queensland
-      and New South Wales share similar rates of 1.04.
-      These differences raise another question: <strong>What
-      happens when we reshape the map to make prescription
-      rates, rather than geography, the focus?</strong>
-    </p>
+    <div class="storytelling-row">
+
+      <p class="note_question">
+        Which parts of Australia stand out?
+      </p>
+
+      <p class="note">
+        <strong>Tasmania leads with approximately 1.31 monthly
+        prescriptions per resident, more than double the
+        Northern Territory's 0.64</strong>. Meanwhile, Queensland
+        and New South Wales share similar rates of 1.04.
+        These differences raise another question: <strong>What
+        happens when we reshape the map to make prescription
+        rates, rather than geography, the focus?</strong>
+      </p>
+
+    </div>
+    
   </div>
 
   
   <!-- MAP 3: DORLING CARTOGRAM -->
   <div class="panel">
     <h3>How Do State Prescription Rates Compare Without Geographic Area?</h3>
-    <p class="note">
-      Each circle represents an Australian state or territory. 
-      Circle area is proportional to the average monthly 
-      PBS prescriptions per resident in 2025, 
-      while darker bluish-green shades indicate higher rates. 
-      Circles are repositioned to reduce overlap while approximately preserving 
-      geographic relationships. Distances and positions are schematic.
-    </p>
+    
+    <div class="chart-description-columns">
+
+      <p class="note">
+        This Dorling cartogram represents each Australian
+        state or territory as a circle. Circle area is
+        proportional to the average monthly PBS prescriptions
+        per resident in 2025. The circles are repositioned
+        to reduce overlap while approximately preserving
+        geographic relationships. Distances and positions
+        are schematic.
+      </p>
+
+      <p class="note">
+        <strong>How to read this cartogram:</strong>
+        Larger circles indicate higher prescription rates,
+        while smaller circles indicate lower rates.
+        Darker bluish-green shades also represent higher
+        rates. Unlike a conventional map, circle size
+        reflects prescription rates rather than the
+        geographic area of each state or territory.
+      </p>
+
+    </div>
+
     <div id="state-dorling" class="chart"></div>
   
   <div class="dorling-custom-legend">
@@ -365,15 +588,22 @@
     <p class="dorling-legend-note">
       Larger and darker circles indicate higher prescription rates.
     </p>
-    <p class="note_question">What if Australia's geography no longer dominated the picture?</p> 
-    <p class="note">
-      With states representedby circles, Tasmania's high 
-      prescription rate becomes impossible to overlook, 
-      while the Northern Territory appears much smaller and lighter. 
-      This reinforces an important discovery: <strong> A state's geographic size
-      does not determine its prescription rate</strong>. <strong>But could
-      differences within communities reveal an even deeper story?</strong>
-    </p>
+    <div class="storytelling-row">
+
+      <p class="note_question">
+        What if Australia's geography no longer dominated the picture?
+      </p>
+
+      <p class="note">
+        With states representedby circles, Tasmania's high 
+        prescription rate becomes impossible to overlook, 
+        while the Northern Territory appears much smaller and lighter. 
+        This reinforces an important discovery: <strong> A state's geographic size
+        does not determine its prescription rate</strong>. <strong>But could
+        differences within communities reveal an even deeper story?</strong>
+      </p>
+
+    </div>
 
   </div>
 </div>
@@ -398,50 +628,87 @@
       </p>
     </div>
     <div id="seifa-heatmap" class="chart"></div>
-  <p class="note_question">
-    Does socioeconomic disadvantage reveal another divide?
-  </p>
-  <p class="note">
-    Across 2013 - 2023, <strong>the most disadvantaged areas (Q1)
-    consistently recorded higher prescription rates than
-    the least disadvantaged (Q5)</strong>. By 2023, the gap was
-    approximately 0.15 monthly prescriptions per resident.
-    This suggests that Australia's medicine use varies
-    not only by location, but also by the socioeconomic
-    characteristics of communities.
-  </p>
+    <div class="storytelling-row">
+
+      <p class="note_question">
+        Does socioeconomic disadvantage reveal another divide?
+      </p>
+
+      <p class="note">
+        Across 2013 - 2023, <strong>the most disadvantaged areas (Q1)
+        consistently recorded higher prescription rates than
+        the least disadvantaged (Q5)</strong>. By 2023, the gap was
+        approximately 0.15 monthly prescriptions per resident.
+        This suggests that Australia's medicine use varies
+        not only by location, but also by the socioeconomic
+        characteristics of communities.
+      </p>
+
+    </div>
   </div>
-  <p class="note_question">The Bigger Picture:</p>
-  <p class="note">
-  Australia's prescription patterns reveal more than differences
-  between states. From Tasmania's higher dispensing
-  rates to the divide between disadvantaged and
-  advantaged areas, medicine use varies across
-  communities. But these patterns raise a deeper
-  question: <strong>Could changes in Australians'
-  chronic health conditions help us understand
-  their evolving healthcare needs?</strong>
-</p>
+  
+  <div class="storytelling-row">
+
+    <div>
+      <p class="note_question">The Bigger Picture:</p>
+      <p class="note">
+        Australia's prescription patterns reveal more than
+        differences between states. From Tasmania's higher
+        dispensing rates to the divide between disadvantaged
+        and advantaged areas, medicine use varies across
+        communities. But these patterns raise a deeper
+        question:
+        <strong>Could changes in Australians' chronic health
+        conditions help us understand their evolving
+        healthcare needs?</strong>
+      </p>
+    </div>
+
+    <div>
+      <p class="note_question">What comes next?</p>
+      <p class="note">
+        Geographic differences reveal where medicine use
+        varies, but understanding Australia's healthcare
+        needs also requires looking at
+        <strong>chronic health conditions</strong>. Exploring
+        their prevalence and how it has changed over time
+        provides another perspective on the health challenges
+        facing Australians.
+      </p>
+    </div>
+
+  </div>
 
 </section>
 
 <!-- SECTION 04 -->
 <section id="needs">
-  <div class="section-no">SECTION 04</div>
+  <div class="section-intro">
 
-  <h2>Behind the Prescriptions</h2>
+    <!-- LEFT COLUMN -->
+    <div class="section-intro-left">
+      <div class="section-no">SECTION 04</div>
 
-  <p class="lead">
-    What do these patterns suggest about changing
-    healthcare needs?
-  </p>
+      <h2>Behind the Prescriptions</h2>
 
-  <p class="note">
-    Prescription patterns provide one perspective on
-    healthcare needs. Australia's National Health Survey
-    provides another, showing how the prevalence of
-    selected chronic conditions has changed over time.
-  </p>
+      <p class="lead">
+        What do these patterns suggest about changing
+        healthcare needs?
+      </p>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="section-intro-right">
+      <h3>The chronic condition connection</h3>
+
+      <p>
+        Explore how the prevalence of chronic conditions has
+        changed over time, and what these patterns reveal
+        about Australia's evolving healthcare needs.
+      </p>
+    </div>
+
+  </div>
 
 
   <!-- CHART 1: SMALL MULTIPLES -->
@@ -465,16 +732,23 @@
 
     <div id="chronic-small-multiples" class="chart"></div>
 
-    <p class="note_question">Are more Australians living with chronic conditions?</p>
-    <p class="note">
-      The proportion reporting <strong>no selected chronic conditions
-      fell from approximately 58% in 2008 to 50% in 2022</strong>.
-      Meanwhile, the <strong>proportions reporting one, two, or
-      three or more conditions gradually increased.
-      This suggests a growing burden of chronic conditions</strong>,
-      adding another dimension to the medicine-use patterns
-      explored earlier.
-    </p>
+    <div class="storytelling-row">
+
+      <p class="note_question">
+        Are more Australians living with chronic conditions?
+      </p>
+
+      <p class="note">
+        The proportion reporting <strong>no selected chronic conditions
+        fell from approximately 58% in 2008 to 50% in 2022</strong>.
+        Meanwhile, the <strong>proportions reporting one, two, or
+        three or more conditions gradually increased.
+        This suggests a growing burden of chronic conditions</strong>,
+        adding another dimension to the medicine-use patterns
+        explored earlier.
+      </p>
+
+    </div>
   </div>
 
   
@@ -500,19 +774,23 @@
 
 
   <div id="chronic-lollipop" class="chart"></div>
-  <p class="note_question">
-    What changed over these 14 years?
-  </p>
+  <div class="storytelling-row">
 
-  <p class="note">
-    In 2008, nearly 58% of Australians reported no
-    selected chronic conditions. By 2022, that figure
-    had fallen to 50.1%, while the <strong>proportion reporting
-    two or more conditions rose from 16.5% to 21.9%.
-    This shift suggests that managing multiple chronic
-    conditions is becoming an increasingly important
-    part of Australia's healthcare story.</strong>
-  </p>
+    <p class="note_question">
+      What changed over these 14 years?
+    </p>
+
+    <p class="note">
+      In 2008, nearly 58% of Australians reported no
+      selected chronic conditions. By 2022, that figure
+      had fallen to 50.1%, while the <strong>proportion reporting
+      two or more conditions rose from 16.5% to 21.9%.
+      This shift suggests that managing multiple chronic
+      conditions is becoming an increasingly important
+      part of Australia's healthcare story.</strong>
+    </p>
+
+  </div>
 </div>
 
 
@@ -564,20 +842,24 @@
     </div>
 
   </div>
-  <p class="note_question">
-    What does Australia's changing health landscape
-    look like today?
-  </p>
+  <div class="storytelling-row">
 
-  <p class="note">
-    Imagine a room of 100 Australians. In 2022,
-    approximately 50 would report at least one selected
-    chronic condition. After exploring differences in
-    medicine use across age groups, regions and
-    socioeconomic communities, this finding reminds
-    us why understanding Australia's evolving healthcare
-    needs matters.
-  </p>
+    <p class="note_question">
+      What does Australia's changing health landscape
+    look like today?
+    </p>
+
+    <p class="note">
+      Imagine a room of 100 Australians. In 2022,
+      approximately 50 would report at least one selected
+      chronic condition. After exploring differences in
+      medicine use across age groups, regions and
+      socioeconomic communities, this finding reminds
+      us why understanding Australia's evolving healthcare
+      needs matters.
+    </p>
+
+  </div>
 </div>
 
 
@@ -848,6 +1130,14 @@
   // ============================================
 
   Promise.all([
+    vegaEmbed(
+  "#header-australia-map",
+  "js/header_australia.vg.json",
+  {
+    actions: false,
+    renderer: "svg"
+  }
+),
 
     // SECTION 01
     vegaEmbed(

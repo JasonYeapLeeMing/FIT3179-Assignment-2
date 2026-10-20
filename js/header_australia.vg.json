@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 280,
+  "background": "#12354B",
+  "data": {
+    "url": "data/australia_states_2021.topojson.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2021_AUST_GDA2020"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.properties.STE_CODE21 != '9' && datum.properties.STE_CODE21 != 'Z'"
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "fill": "#A9D9EF",
+    "stroke": "#A9D9EF",
+    "strokeWidth": 1.5
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
+

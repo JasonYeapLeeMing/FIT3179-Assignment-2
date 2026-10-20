@@ -1,37 +1,211 @@
-:root{--ink:#18334a;--muted:#556a7a;--blue:#176b91;--line:#e1e8ec;--paper:#f6f8fa}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
-header{background:#12354b;color:white;padding:76px max(7vw,24px) 64px}
-header .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.76rem;color:#b3dbe8}
-h1{font-family:'Times New Roman', Times, serif;font-size:clamp(2.3rem,5vw,4.6rem);line-height:1.12;max-width:850px;margin:18px 0}
-header p{max-width:660px;color:#d9eaf1;font-size:1.13rem}
-nav{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
-nav a{color:white;text-decoration:none;border-bottom:1px solid #a7d7e9;font-size:.9rem}
-main{max-width:1150px;margin:auto;padding:0 24px 65px}
-section{padding:62px 0;border-bottom:3px solid #0c0d0e}
+/*
+  MEDICINE USE IN AUSTRALIA — STYLESHEET
+  FIT3179 Assignment 2
+
+  Organised by purpose. The values and visual design are preserved.
+  Responsive overrides are collected at the bottom.
+*/
+
+/* ==================================================================
+   01. DESIGN TOKENS & GLOBAL RESET
+   ================================================================== */
+
+/* Colour palette used throughout the dashboard. */
+:root {
+  --ink: #18334a;
+  --muted: #556a7a;
+  --blue: #176b91;
+  --line: #e1e8ec;
+  --paper: #f6f8fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial,Helvetica,sans-serif;
+  line-height: 1.65;
+}
+
+
+/* ==================================================================
+   02. DASHBOARD HEADER & NAVIGATION
+   ================================================================== */
+
+/* Dark navy hero banner. */
+header {
+  background: #12354b;
+  color: white;
+  padding: 76px max(7vw,24px) 64px;
+  overflow: hidden;
+}
+
+header .eyebrow {
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: .76rem;
+  color: #b3dbe8;
+}
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(2.3rem,5vw,4.6rem);
+  line-height: 1.12;
+  max-width: 850px;
+  margin: 18px 0;
+}
+
+header p {
+  max-width: 660px;
+  color: #d9eaf1;
+  font-size: 1.13rem;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid #a7d7e9;
+  font-size: .9rem;
+}
+
+.main-subtitle {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.5;
+  max-width: 48ch;
+  text-align: left;
+}
+
+/* Two-column header: text on the left, decorative Australia map on the right. */
+.header-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header-content {
+  min-width: 0;
+}
+
+.header-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.header-map .vega-embed {
+  max-width: 100%;
+}
+
+.header-map svg {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ==================================================================
+   03. PAGE STRUCTURE & SECTION HEADINGS
+   ================================================================== */
+
+/* Main content width and spacing between dashboard sections. */
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 0 24px 65px;
+}
+
+section {
+  padding: 62px 0;
+  border-bottom: 3px solid #0c0d0e;
+}
+
 .section-no {
   display: block;
   position: relative;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 40px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
   font-weight: bold;
   letter-spacing: 0.15em;
-  line-height: 1.4;
+  line-height: 1.1;
   color: var(--blue);
   margin-bottom: 16px;
   height: auto;
   overflow: visible;
 }
 
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  margin: 10px 0;
+}
 
-.panel{background:white;border:1px solid var(--line);border-radius:10px;padding:25px;margin:25px 0}
-h2{font-family:'Times New Roman', Times, serif;font-size:40px;margin:10px 0}
+/* Two-column introduction used at the start of all four sections. */
+.section-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
+  margin-bottom: 32px;
+}
 
-.placeholder{background:#edf3f6;border:1px dashed #a6bdca;border-radius:8px;padding:25px;margin:15px 0;color:#4c6576}
-.chart{width:100%;min-height:310px}
-footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;color:var(--muted)}
-@media(max-width:600px){header{padding:45px 24px}.panel{padding:14px}section{padding:40px 0}}
+.section-intro-left,
+.section-intro-right {
+  min-width: 0;
+}
+
+.section-intro-right {
+  padding-top: 76px;
+}
+
+.section-intro-left h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.section-intro-left .lead {
+  margin: 0;
+}
+
+.section-intro-right h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.section-intro-right p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 48ch;
+}
 
 
+/* ==================================================================
+   04. SHARED TYPOGRAPHY & TEXT
+   ================================================================== */
+
+/* Guiding questions, chart questions, and explanatory paragraphs. */
 .lead {
   font-family: Arial, sans-serif;
   font-size: 24px;
@@ -47,6 +221,7 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
   max-width: 50ch;
   line-height: 1.6;
 }
+
 .note {
   font-family: Arial, sans-serif;
   font-size: 18px;
@@ -54,8 +229,135 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
   line-height: 1.6;
 }
 
-/* Interactive choropleth zoom controls */
+body, p, nav, .eyebrow {
+  font-family: Arial, sans-serif;
+}
 
+
+/* ==================================================================
+   05. CHART PANELS & DESCRIPTIONS
+   ================================================================== */
+
+/* Shared white chart cards and embedded visualisation containers. */
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+.placeholder {
+  background: #edf3f6;
+  border: 1px dashed #a6bdca;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 15px 0;
+  color: #4c6576;
+}
+
+.chart {
+  width: 100%;
+  min-height: 310px;
+}
+
+.panel h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  max-width: 48ch;
+  line-height: 1.4;
+}
+
+/* Side-by-side explanatory text above selected maps. */
+.chart-description-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.chart-description-columns .note {
+  max-width: 48ch;
+  margin-top: 0;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+
+/* ==================================================================
+   06. STORYTELLING & SECTION CONCLUSIONS
+   ================================================================== */
+
+/* Two-column end-of-dashboard conclusion. */
+.conclusion-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.conclusion-item {
+  min-width: 0;
+  font-family: Arial, sans-serif;
+}
+
+.conclusion-item .note_question {
+  font-family: Arial, sans-serif;
+  max-width: 48ch;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.conclusion-item .note {
+  font-family: Arial, sans-serif;
+  max-width: 48ch;
+  margin-top: 0;
+  text-align: left;
+}
+
+/* Two-column question-and-answer storytelling beneath charts. */
+.storytelling-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
+  margin-top: 24px;
+}
+
+.storytelling-row .note {
+  margin-top: 0;
+  margin-bottom: 0;
+  min-width: 0;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  max-width: 46ch;
+  line-height: 1.6;
+}
+
+.storytelling-row .note_question {
+  margin: 0;
+  padding: 0;
+  align-self: start;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  max-width: 50ch;
+  line-height: 1.6;
+}
+
+
+/* ==================================================================
+   07. SECTION 03 — CHOROPLETH INTERACTIONS
+   ================================================================== */
+
+/* Custom pan/zoom button positioning and map cursor states. */
 .map-zoom-container {
   position: relative;
   width: 100%;
@@ -100,9 +402,11 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
 }
 
 
+/* ==================================================================
+   08. SECTION 03 — DORLING CARTOGRAM LEGEND
+   ================================================================== */
 
-/* SECTION 03: Dorling cartogram custom legend */
-
+/* Custom size-and-colour legend beneath the Dorling cartogram. */
 .dorling-custom-legend {
   margin-top: 0;
   padding: 8px 0 4px;
@@ -159,8 +463,11 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
 }
 
 
-/* SECTION 04: Waffle chart layout */
+/* ==================================================================
+   09. SECTION 04 — CHRONIC CONDITION VISUALISATIONS
+   ================================================================== */
 
+/* Two-column waffle chart and statistic layout. */
 .waffle-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -187,7 +494,7 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
 }
 
 .waffle-stat {
-  font-family: Georgia, serif;
+  font-family: "Times New Roman", serif;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
   font-weight: bold;
   line-height: 1.1;
@@ -247,19 +554,7 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
   border: 1px solid #c6d7df;
 }
 
-@media (max-width: 800px) {
-  .waffle-layout {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .waffle-insight {
-    padding: 10px 0;
-  }
-}
-
-
-/* Centre chronic-condition small multiples */
+/* Centre the chronic-condition small multiples. */
 #chronic-small-multiples {
   display: flex;
   justify-content: center;
@@ -267,40 +562,24 @@ footer{max-width:1150px;margin:auto;padding:32px 24px 55px;font-size:.88rem;colo
 }
 
 
+/* ==================================================================
+   10. DATA SOURCES & ATTRIBUTION FOOTER
+   ================================================================== */
 
-/* TYPOGRAPHY */
-
-
-/* Arial for paragraphs and other body text */
-body, p, nav, .eyebrow {
-  font-family: Arial, sans-serif;
+footer {
+  max-width: 1150px;
+  margin: auto;
+  padding: 32px 24px 55px;
+  font-size: .88rem;
+  color: var(--muted);
 }
 
-/* Chart headings */
-.panel h3 {
-  font-family: "Times New Roman", serif;
-  font-size: 1.3rem;
-  line-height: 1.4;
-}
-
-
-/* Large waffle chart statistic */
-.waffle-stat {
-  font-family: "Times New Roman", serif;
-}
-
-
-
-/* ==========================================
-   SOURCE AND ATTRIBUTION FOOTER
-   ========================================== */
-
+/* Data source citations, links, and footer typography. */
 .attribution-footer {
   font-family: Arial, sans-serif;
   color: #18334a;
 }
 
-/* Main footer title: serif */
 .attribution-footer h2 {
   font-family: "Times New Roman", Times, serif;
   font-size: 40px;
@@ -310,7 +589,6 @@ body, p, nav, .eyebrow {
   max-width: 48ch;
 }
 
-/* Source headings: sans-serif */
 .attribution-footer h3 {
   font-family: "Times New Roman", Times, serif;
   font-size: 28px;
@@ -320,7 +598,6 @@ body, p, nav, .eyebrow {
   max-width: 48ch;
 }
 
-/* All footer paragraphs */
 .attribution-footer p {
   font-family: Arial, sans-serif;
   font-size: 18px;
@@ -329,12 +606,10 @@ body, p, nav, .eyebrow {
   overflow-wrap: anywhere;
 }
 
-/* Source entries */
 .attribution-entry {
   margin-bottom: 28px;
 }
 
-/* Hyperlinks */
 .attribution-footer a {
   font-family: Arial, sans-serif;
   font-size: 18px;
@@ -348,7 +623,6 @@ body, p, nav, .eyebrow {
   color: #0d4866;
 }
 
-/* Introductory paragraph */
 .attribution-intro {
   margin-bottom: 24px;
   font-family: Arial, sans-serif;
@@ -356,7 +630,6 @@ body, p, nav, .eyebrow {
   max-width: 48ch;
 }
 
-/* Footer credit */
 .footer-credit {
   margin-top: 24px;
   font-size: 18px;
@@ -364,72 +637,60 @@ body, p, nav, .eyebrow {
   max-width: 48ch;
 }
 
-
-/* Two-column source attribution layout */
+/* Two-column grid for the data source references. */
 .attribution-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 50px;
-    row-gap: 32px;
-    align-items: start;
-    margin-top: 24px;
-    margin-bottom: 32px;
-}
-
-/* Individual data source entries */
-.attribution-grid .attribution-entry {
-    min-width: 0;
-    margin-bottom: 0;
-}
-
-/* Preserve readable line lengths */
-.attribution-grid .attribution-entry h3,
-.attribution-grid .attribution-entry p {
-    max-width: 48ch;
-}
-
-/* Stack into one column on narrow screens */
-@media (max-width: 700px) {
-    .attribution-grid {
-        grid-template-columns: 1fr;
-        row-gap: 28px;
-    }
-}
-
-
-.panel h3 {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 32px;
-  font-weight: bold;
-  margin: 0 0 8px;
-  max-width: 48ch;
-}
-
-.main-subtitle {
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-  font-weight: normal;
-  line-height: 1.5;
-  max-width: 48ch;
-  text-align: left;
-}
-
-/* Two-column layout */
-
-.chart-description-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px;
+  column-gap: 50px;
+  row-gap: 32px;
   align-items: start;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 32px;
 }
 
-.chart-description-columns .note {
+.attribution-grid .attribution-entry {
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.attribution-grid .attribution-entry h3,
+.attribution-grid .attribution-entry p {
   max-width: 48ch;
-  margin-top: 0;
-  text-align: left;
-  font-family: Arial, sans-serif;
-  font-size: 18px;
+}
+
+
+/* ==================================================================
+   11. RESPONSIVE LAYOUTS (SMALL SCREENS)
+   ================================================================== */
+
+/* Responsive overrides for panels, maps, columns, and header. */
+@media (max-width:600px) {
+  header {
+    padding: 45px 24px;
+  }
+  .panel {
+    padding: 14px;
+  }
+  section {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .waffle-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .waffle-insight {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .attribution-grid {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -439,38 +700,36 @@ body, p, nav, .eyebrow {
   }
 }
 
-.conclusion-columns {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
-  align-items: start;
-  margin-top: 24px;
-  margin-bottom: 40px;
-}
-
-.conclusion-item {
-  min-width: 0;
-  font-family: Arial, sans-serif;
-}
-
-.conclusion-item .note_question {
-  font-family: Arial, sans-serif;
-  max-width: 48ch;
-  margin-top: 0;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.conclusion-item .note {
-  font-family: Arial, sans-serif;
-  max-width: 48ch;
-  margin-top: 0;
-  text-align: left;
-}
-
 @media (max-width: 700px) {
   .conclusion-columns {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .header-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .header-map {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .section-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section-intro-right {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .storytelling-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
